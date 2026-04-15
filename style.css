@@ -36,26 +36,31 @@ html, body {
     position: relative;
     top: -4px;   /* 👈 moves triangle UP */
     right: 0px;   /* 👈 optional: keeps border even */
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 /* Hover effect */
 .triangle-1-btn:hover {
     background: white;
+    transform: scale(1.08) skewX(-5deg);
 }
 
 .triangle-1-btn:hover span {
     color: blue;
+    transform: rotate(70deg) translateY(-10px) scale(1.0);
 }
 
 /* Text */
 .triangle-1-btn span {
     position: absolute;
     color: white;
-    right: -1px;
-    bottom: 98px;
+    right: 10px;
+    bottom: 90px;
     font-size: 30px;
     font-weight: bold;
     transform: rotate(70deg);
+    
+    transition: all 0.25s ease;
 }
 
 /*Triangle 2*/
@@ -83,11 +88,14 @@ html, body {
     top: 5px;   /* 👈 moves triangle UP */
     left: -5px;   /* 👈 optional: keeps border even */
     transform: rotate(1deg);
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 /* Hover effect */
 .triangle-2-btn:hover {
     background: white;
+    
+    transform: scale(1.0) skewX(2deg);
 }
 
 .triangle-2-btn:hover span {
@@ -103,6 +111,9 @@ html, body {
     font-size: 45px;
     font-weight: bold;
     transform: rotate(70deg);
+
+    
+    transition: all 0.25s ease;
 }
 
 /*Triangle 3*/
@@ -115,6 +126,7 @@ html, body {
     display: inline-block;
 
     transform: rotate(-13deg) translate(2vw,-35vh);
+    
 }
 
 .triangle-3-btn {
@@ -128,15 +140,18 @@ html, body {
     position: relative;
     top: -5px;   /* 👈 moves triangle UP */
     left: -10px;   /* 👈 optional: keeps border even */
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 /* Hover effect */
 .triangle-3-btn:hover {
     background: white;
+    transform: scale(1.0) skewX(2deg);
 }
 
 .triangle-3-btn:hover span {
     color: blue;
+    transform: rotate(-0deg) translateX(-24px) translateY(10px) scale(1.0);
 }
 
 /* Text */
@@ -148,6 +163,8 @@ html, body {
     font-size: 42px;
     font-weight: bold;
     transform: rotate(20deg);
+    
+    transition: all 0.25s ease;
 }
 
 /*Triangle 4*/
@@ -173,26 +190,30 @@ html, body {
     position: relative;
     top: -5px;   /* 👈 moves triangle UP */
     left: -10px;   /* 👈 optional: keeps border even */
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);             
 }
 
 /* Hover effect */
 .triangle-4-btn:hover {
     background: white;
+    transform: scale(1.0) skewX(2deg);
 }
 
 .triangle-4-btn:hover span {
     color: blue;
+    transform: rotate(-0deg) translateX(-4px) translateY(-15px) scale(1.0);
 }
 
 /* Text */
 .triangle-4-btn span {
     position: absolute;
     color: white;
-    right: 70px;
-    bottom: 230px;
-    font-size: 20px;
+    right: 80px;
+    bottom: 240px;
+    font-size: 23px;
     font-weight: bold;
     transform: rotate(-20deg);
+    transition: all 0.25s ease;
 }
 
 /*Triangle 5*/
@@ -217,27 +238,30 @@ html, body {
 
     position: relative;
     top: -5px;   /* 👈 moves triangle UP */
-    left: -10px;   /* 👈 optional: keeps border even */
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);  
 }
 
 /* Hover effect */
 .triangle-5-btn:hover {
     background: white;
+    transform: scale(1.0) skewX(2deg);
 }
 
 .triangle-5-btn:hover span {
     color: blue;
+    transform: rotate(20deg) translateX(-4px) translateY(15px) scale(1.0);
 }
 
 /* Text */
 .triangle-5-btn span {
     position: absolute;
     color: white;
-    right: 21px;
+    right: 30px;
     bottom: 270px;
-    font-size: 30px;
+    font-size: 28px;
     font-weight: bold;
     transform: rotate(-7deg);
+    transition: all 0.25s ease;
 }
 
 
@@ -265,15 +289,18 @@ html, body {
     position: relative;
     top: -5px;   /* 👈 moves triangle UP */
     left: -10px;   /* 👈 optional: keeps border even */
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);  
 }
 
 /* Hover effect */
 .triangle-6-btn:hover {
     background: white;
+    transform: scale(1.0) skewX(2deg);
 }
 
 .triangle-6-btn:hover span {
     color: blue;
+    transform: rotate(-20deg) translateX(-4px) translateY(15px) scale(1.0);
 }
 
 /* Text */
@@ -285,6 +312,7 @@ html, body {
     font-size: 17px;
     font-weight: bold;
     transform: rotate(15deg);
+    transition: all 0.25s ease;
 }
 
 /*Triangle 7*/
@@ -310,15 +338,18 @@ html, body {
     position: relative;
     top: -5px;   /* 👈 moves triangle UP */
     left: -10px;   /* 👈 optional: keeps border even */
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
 /* Hover effect */
 .triangle-7-btn:hover {
     background: white;
+    transform: scale(1.0) skewX(2deg);
 }
 
 .triangle-7-btn:hover span {
     color: blue;
+    transform: rotate(50deg) translateX(-4px) translateY(15px) scale(1.0);
 }
 
 /* Text */
@@ -330,4 +361,5 @@ html, body {
     font-size: 42px;
     font-weight: bold;
     transform: rotate(55deg);
+    transition: all 0.25s ease;
 }

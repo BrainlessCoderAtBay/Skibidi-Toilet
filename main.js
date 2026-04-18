@@ -143,19 +143,28 @@ function updateTime() {
     const now = new Date();
 
     // TIME
-    const hours = now.getHours().toString().padStart(2, '0');
+    let hours = now.getHours();
     const minutes = now.getMinutes().toString().padStart(2, '0');
     const seconds = now.getSeconds().toString().padStart(2, '0');
+
+    // AM / PM
+    const ampm = hours >= 12 ? "PM" : "AM";
+
+    // convert to 12-hour format
+    hours = hours % 12;
+    hours = hours ? hours : 12; // 0 becomes 12
+
+    const hoursStr = hours.toString().padStart(2, '0');
 
     // DATE
     const day = now.getDate();
     const month = now.getMonth() + 1;
-    const year = now.getFullYear().toString().slice(-2); // last 2 digits
+    const year = now.getFullYear().toString().slice(-2);
 
     const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
     const weekday = days[now.getDay()];
 
-    const timeString = `${hours}:${minutes}:${seconds}`;
+    const timeString = `${hoursStr}:${minutes}:${seconds} ${ampm}`;
     const dateString = `${day}/${month}/${year}-${weekday}`;
 
     document.getElementById("currentTime").innerHTML =

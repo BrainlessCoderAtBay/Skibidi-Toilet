@@ -406,13 +406,13 @@ body {
 
 .descNameWrapper {
     position: absolute;
-    width: 450px;
-    height: 400px;
+    width: 550px;
+    height: 500px;
     clip-path: polygon(0% 60%, 100% 100%, 30% 20%);
     background: lightblue;
-    transform: rotate(-60deg);
-    top: -150px;
-    left: 50px;
+    transform: rotate(-50deg);
+    top: -250px;
+    left: -50px;
 }
 
 .descName {
@@ -428,7 +428,7 @@ body {
     color: white;
     right: 130px;
     bottom: 125px;
-    font-size: 40px;
+    font-size: 50px;
     font-weight: bold;
     transform: rotate(21deg);
 }
@@ -445,28 +445,28 @@ body {
     width: 250px;
 
     top: 275px;
-    transform: rotate(20deg);
-    --rot: 20deg;
+    transform: rotate(-20deg);
+    --rot: -20deg;
     animation: float 2s ease-in-out infinite;
 }
 
 .descInfo2{
     position: absolute;
 
-    top: 150px;
+    top: 50px;
     left: 350px;
-    transform: rotate(0deg);
-    --rot: -0deg;
+    transform: rotate(-20deg);
+    --rot: -20deg;
     animation: float 4s ease-in-out infinite;
 }
 
 .descInfo3{
     position: absolute;
 
-    top: 250px;
+    top: 225px;
     left: 400px;
-    transform: rotate(0deg);
-    --rot: 0deg;
+    transform: rotate(10deg);
+    --rot: 10deg;
     animation: float 6s ease-in-out infinite;
 }
 
@@ -487,8 +487,8 @@ body {
 
     width: 200px;
 
-    top: 350px;
-    left: 250px;
+    top: 320px;
+    left: 220px;
     transform: rotate(20deg);
     --rot: 20deg;
     animation: float 4s ease-in-out infinite;
@@ -542,9 +542,9 @@ body {
 .time span{
     position: absolute;
     color: white;
-    right: 290px;
-    bottom: 50px;
-    font-size: 45px;
+    right: 300px;
+    bottom: 45px;
+    font-size: 40px;
     font-weight: bold;
 }
 

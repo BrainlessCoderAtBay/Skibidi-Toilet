@@ -10,7 +10,7 @@ const buttonDescriptions = {
     'triangle-6-btn': 'This is the sixth triangle. It represents my resilience and determination.',
     'triangle-7-btn': 'This is the seventh triangle. It embodies my passion for making a positive impact.'
 };
-
+/*
 buttons.forEach(button => {
     button.addEventListener('mouseenter', () => {
 
@@ -21,3 +21,30 @@ buttons.forEach(button => {
         description.textContent = buttonDescriptions[key] || 'No description available.';
     });
 });
+*/  
+//TIME FUNCTION
+function updateTime() {
+    const now = new Date();
+
+    // TIME
+    const hours = now.getHours().toString().padStart(2, '0');
+    const minutes = now.getMinutes().toString().padStart(2, '0');
+    const seconds = now.getSeconds().toString().padStart(2, '0');
+
+    // DATE
+    const day = now.getDate();
+    const month = now.getMonth() + 1;
+    const year = now.getFullYear().toString().slice(-2); // last 2 digits
+
+    const days = ["SUN","MON","TUE","WED","THU","FRI","SAT"];
+    const weekday = days[now.getDay()];
+
+    const timeString = `${hours}:${minutes}:${seconds}`;
+    const dateString = `${day}/${month}/${year}-${weekday}`;
+
+    document.getElementById("currentTime").innerHTML =
+        `${timeString} <br> ${dateString}`;
+}
+
+setInterval(updateTime, 1000);
+updateTime();

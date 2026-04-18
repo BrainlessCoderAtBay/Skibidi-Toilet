@@ -8,36 +8,52 @@ html, body {
     background-size: cover;
 }
 
-#container {
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 255, 0.479); /* semi-transparent white */
+body {
+    display: flex;
+    margin: 0;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+#scale-wrapper {
+    width: 1920px;
+    height: 1080px;
+    transform: scale(min(100vw / 1920, 100vh / 1080));
+    transform-origin: center;
+}
+
+#container {
+    position: relative;
+    width: 1920px;
+    height: 1080px;
+    background: rgba(0, 0, 255, 0.479);
+}
 /* Triangle 1 */
 .triangle-1-wrapper {
-    width: 620px;
-    height: 260px;
+    width: 500px;
+    height: 200px;
     background: lightblue;
-    clip-path: polygon(30% 0%, 100% 50%, 70% 100%);
-    display: inline-block;
+    clip-path: polygon(30% 0%, 100% 50%, 45% 100%);
 
-    transform: rotate(-32deg) translate(35vw,21vh);
+    position: absolute;
+    top: 325px;
+    left: 700px;
+    transform: rotate(200deg);
 }
 
 .triangle-1-btn {
     width: 100%;
     height: 97%;
     background: rgb(23, 23, 243);
-    clip-path: polygon(30% 0%, 100% 50%, 70% 100%);
+    clip-path: polygon(30% 0%, 100% 50%, 45% 100%);
     border: none;
     cursor: pointer;
 
     position: relative;
-    top: -4px;   /* 👈 moves triangle UP */
-    right: 0px;   /* 👈 optional: keeps border even */
+    top: 6px;   /* 👈 moves triangle UP */
+    right: -8px;   /* 👈 optional: keeps border even */
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
@@ -49,46 +65,46 @@ html, body {
 
 .triangle-1-btn:hover span {
     color: blue;
-    transform: rotate(70deg) translateY(-10px) scale(1.0);
+    transform: rotate(195deg) translateY(-1%) translateX(-5%) scale(1.25);
 }
 
 /* Text */
 .triangle-1-btn span {
     position: absolute;
     color: white;
-    right: 10px;
-    bottom: 90px;
-    font-size: 30px;
+    right: 100px;
+    bottom: 100px;
+    font-size: 40px;
     font-weight: bold;
-    transform: rotate(70deg);
-    
+    transform: rotate(195deg);
     transition: all 0.25s ease;
 }
 
 /*Triangle 2*/
 
 .triangle-2-wrapper {
-    width: 470px;
-    height: 660px;
+    width: 400px;
+    height: 650px;
     background: lightblue;
-    clip-path: polygon(0% 50%, 100% 100%, 40% 36%);
-    display: inline-block;
+    clip-path: polygon(0% 30%, 100% 100%, 20% 16%);
 
-    
-    transform:rotate(-42deg) translate(19vw,-11vh);
+    position: absolute;
+    top: 25px;
+    left: 490px;
+    transform: rotate(-25deg);
 }
 
 .triangle-2-btn {
     width: 100%;
     height: 100%;
     background: rgb(23, 23, 243);
-    clip-path: polygon(0% 50%, 100% 100%, 40% 36%);
+    clip-path: polygon(0% 30%, 100% 100%, 20% 16%);
     border: none;
     cursor: pointer;
 
     position: relative;
-    top: 5px;   /* 👈 moves triangle UP */
-    left: -5px;   /* 👈 optional: keeps border even */
+    top: 3px;   /* 👈 moves triangle UP */
+    left: -4px;   /* 👈 optional: keeps border even */
     transform: rotate(1deg);
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
@@ -96,25 +112,23 @@ html, body {
 /* Hover effect */
 .triangle-2-btn:hover {
     background: white;
-    
     transform: scale(1.0) skewX(2deg);
 }
 
 .triangle-2-btn:hover span {
     color: blue;
-    transform: rotate(65deg) translateY(10px) scale(1.0);
+    transform: rotate(50deg) translateY(-3px) translateX(-60px) scale(1.3);
 }
 
 /* Text */
 .triangle-2-btn span {
     position: absolute;
     color: white;
-    right: -5px;
-    bottom: 240px;
-    font-size: 45px;
+    right: 125px;
+    bottom: 300px;
+    font-size: 55px;
     font-weight: bold;
-    transform: rotate(70deg);
-
+    transform: rotate(50deg);
     
     transition: all 0.25s ease;
 }
@@ -122,13 +136,15 @@ html, body {
 /*Triangle 3*/
 
 .triangle-3-wrapper {
-    width: 1000px;
-    height: 510px;
+    width: 630px;
+    height: 500px;
     background: lightblue;
-    clip-path: polygon(0% 100%, 100% 100%, 10% 60%);
-    display: inline-block;
-
-    transform: rotate(-13deg) translate(2vw,-35vh);
+    clip-path: polygon(0% 100%, 100% 100%, 10% 52%);
+    
+    position: absolute;
+    top: 75px;
+    left: 385px;
+    transform: rotate(0deg);
     
 }
 
@@ -136,13 +152,13 @@ html, body {
     width: 100%;
     height: 97%;
     background: rgb(23, 23, 243);
-    clip-path: polygon(0% 100%, 100% 100%, 10% 60%);
+    clip-path: polygon(0% 100%, 100% 100%, 10% 52%);
     border: none;
     cursor: pointer;
 
     position: relative;
-    top: -5px;   /* 👈 moves triangle UP */
-    left: -10px;   /* 👈 optional: keeps border even */
+    top: -2px;   /* 👈 moves triangle UP */
+    left: 1px;   /* 👈 optional: keeps border even */
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
@@ -154,18 +170,18 @@ html, body {
 
 .triangle-3-btn:hover span {
     color: blue;
-    transform: rotate(-0deg) translateX(-24px) translateY(10px) scale(1.0);
+    transform: rotate(0deg) translateX(35px) translateY(25px) scale(1.35);
 }
 
 /* Text */
 .triangle-3-btn span {
     position: absolute;
     color: white;
-    right: 80px;
+    right: 290px;
     bottom: 30px;
-    font-size: 42px;
+    font-size: 53px;
     font-weight: bold;
-    transform: rotate(20deg);
+    transform: rotate(10deg);
     
     transition: all 0.25s ease;
 }
@@ -173,13 +189,15 @@ html, body {
 /*Triangle 4*/
 
 .triangle-4-wrapper {
-    width: 650px;
-    height: 510px;
+    width: 300px;
+    height: 600px;
     background: lightblue;
     clip-path: polygon(10% 60%, 100% 40%, 0% 40%);
-    display: inline-block;
-
-    transform: rotate(-14deg) translate(-12vw,-1vh);
+    
+    position: absolute;
+    top: 345px;
+    left: 700px;
+    transform: rotate(0deg);
 }
 
 .triangle-4-btn {
@@ -191,8 +209,8 @@ html, body {
     cursor: pointer;
 
     position: relative;
-    top: -5px;   /* 👈 moves triangle UP */
-    left: -10px;   /* 👈 optional: keeps border even */
+    top: 0px;   /* 👈 moves triangle UP */
+    left: -3px;   /* 👈 optional: keeps border even */
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);             
 }
 
@@ -204,43 +222,47 @@ html, body {
 
 .triangle-4-btn:hover span {
     color: blue;
-    transform: rotate(-0deg) translateX(-4px) translateY(-15px) scale(1.0);
+    transform: rotate(-0deg) translateX(-40px) translateY(-20px) scale(1.2);
 }
 
 /* Text */
 .triangle-4-btn span {
     position: absolute;
     color: white;
-    right: 80px;
-    bottom: 240px;
-    font-size: 23px;
+    right: 60px;
+    bottom: 290px;
+    font-size: 30px;
     font-weight: bold;
-    transform: rotate(-20deg);
+    transform: rotate(-22deg);
     transition: all 0.25s ease;
 }
 
 /*Triangle 5*/
 
 .triangle-5-wrapper {
-    width: 620px;
-    height: 510px;
+    width: 300px;
+    height: 600px;
     background: lightblue;
-    clip-path: polygon(80% 50%, 100% 35%, 0% 40%);
-    display: inline-block;
+    clip-path: polygon(80% 53%, 100% 35%, 0% 40%);
 
-    transform: rotate(-34deg) translate(-21.5vw,-14vh);
+
+    position: absolute;
+    top: 420px;
+    left: 750px;
+    transform: rotate(-18deg);
 }
 
 .triangle-5-btn {
     width: 100%;
     height: 97%;
     background: rgb(23, 23, 243);
-    clip-path: polygon(80% 50%, 100% 35%, 0% 40%);
+    clip-path: polygon(80% 53%, 100% 35%, 0% 40%);
     border: none;
     cursor: pointer;
 
     position: relative;
-    top: -5px;   /* 👈 moves triangle UP */
+    top: 0px;
+    left: 1px;
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);  
 }
 
@@ -252,16 +274,16 @@ html, body {
 
 .triangle-5-btn:hover span {
     color: blue;
-    transform: rotate(20deg) translateX(-4px) translateY(15px) scale(1.0);
+    transform: rotate(15deg) translateX(12px) translateY(25px) scale(1.2);
 }
 
 /* Text */
 .triangle-5-btn span {
     position: absolute;
     color: white;
-    right: 30px;
-    bottom: 270px;
-    font-size: 28px;
+    right: 70px;
+    bottom: 320px;
+    font-size: 35px;
     font-weight: bold;
     transform: rotate(-7deg);
     transition: all 0.25s ease;
@@ -271,24 +293,27 @@ html, body {
 /*Triangle 6*/
 
 .triangle-6-wrapper {
-    width: 470px;
-    height: 510px;
+    width: 400px;
+    height: 500px;
     background: lightblue;
-    clip-path: polygon(0% 60%, 90% 50%, 60% 30%, 0% 35%);
-    display: inline-block;
-    transform: translate(-48vw,16vh);
+    clip-path: polygon(0% 60%, 90% 50%, 78% 26%, 0% 36%);
+    
+    position: absolute;
+    top: 440px;
+    left: 370px;
+    transform: rotate(8deg);
 }
 
 .triangle-6-btn {
     width: 100%;
     height: 97%;
     background: rgb(23, 23, 243);
-    clip-path: polygon(0% 60%, 90% 50%, 60% 30%, 0% 35%);
+    clip-path: polygon(0% 60%, 90% 50%, 78% 26%, 0% 36%);
     border: none;
     cursor: pointer;
 
     position: relative;
-    top: -5px;   /* 👈 moves triangle UP */
+    top: -2px;   /* 👈 moves triangle UP */
     left: -10px;   /* 👈 optional: keeps border even */
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);  
 }
@@ -301,44 +326,46 @@ html, body {
 
 .triangle-6-btn:hover span {
     color: blue;
-    transform: rotate(-20deg) translateX(-4px) translateY(15px) scale(1.0);
+    transform: rotate(-8deg) translateX(90px) translateY(0px) scale(1);
 }
 
 /* Text */
 .triangle-6-btn span {
     position: absolute;
     color: white;
-    right: 20px;
-    bottom: 250px;
-    font-size: 17px;
+    right: 140px;
+    bottom: 230px;
+    font-size: 30px;
     font-weight: bold;
-    transform: rotate(15deg);
+    transform: rotate(-8deg);
     transition: all 0.25s ease;
 }
 
 /*Triangle 7*/
 
 .triangle-7-wrapper {
-    width: 670px;
-    height: 510px;
+    width: 610px;
+    height: 325px;
     background: lightblue;
-    clip-path: polygon(0% 60%, 100% 100%, 20% 40%);
-    display: inline-block;
+    clip-path: polygon(0% 60%, 100% 100%, 30% 20%);
 
-    transform: rotate(-80deg) translate(-20vw,-118vh);
+    position: absolute;
+    top: 650px;
+    left: 390px;
+    transform: rotate(168deg);
 }
 
 .triangle-7-btn {
     width: 100%;
     height: 97%;
     background: rgb(23, 23, 243);
-    clip-path: polygon(0% 60%, 100% 100%, 20% 40%);
+    clip-path: polygon(0% 60%, 100% 100%, 30% 20%);
     border: none;
     cursor: pointer;
 
     position: relative;
-    top: -5px;   /* 👈 moves triangle UP */
-    left: -10px;   /* 👈 optional: keeps border even */
+    top:12px;   /* 👈 moves triangle UP */
+    left: 15px;   /* 👈 optional: keeps border even */
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
 }
 
@@ -350,35 +377,43 @@ html, body {
 
 .triangle-7-btn:hover span {
     color: blue;
-    transform: rotate(50deg) translateX(-4px) translateY(15px) scale(1.0);
+    transform: rotate(204deg) translateX(75px) translateY(20px) scale(1.75);
 }
 
 /* Text */
 .triangle-7-btn span {
     position: absolute;
     color: white;
-    right: 55px;
-    bottom: 145px;
-    font-size: 42px;
+    right: 175px;
+    bottom: 55px;
+    font-size: 50px;
     font-weight: bold;
-    transform: rotate(55deg);
+    transform: rotate(192deg);
     transition: all 0.25s ease;
 }
 
 .description {
-    position: fixed;   /* lock to screen */
-    
-    width: 600px;
-    height: 625px;
+    position: absolute;
+    width:600px;
+    height: 600px;
+    padding: 10px;
 
-    background: lightblue;
-    color: black;
-    font-weight: bold;
-    border-radius: 10px;
+    background-color: lightblue;
+    border-radius: 20px;
 
-    z-index: 1;  /* ALWAYS on top */
+    top: 250px;
+    left: 1050px;
+}
 
-    display: flex;
-    align-items: center;
-    transform: translate(55vw,-90vh)
+.time{
+    position: absolute;
+    width:200px;
+    height: 100px;
+    padding: 10px;
+
+    background-color: lightblue;
+    border-radius: 20px;
+
+    top: 775px;
+    left: 250px;
 }

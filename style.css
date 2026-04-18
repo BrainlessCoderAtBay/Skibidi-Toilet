@@ -17,10 +17,9 @@ body {
     align-items: center;
 }
 
-#scale-wrapper {
-    width: 1920px;
-    height: 1080px;
-    transform: scale(min(100vw / 1920, 100vh / 1080));
+.scale-wrapper {
+    width: 100%;
+    height: 100%;
     transform-origin: center;
 }
 
@@ -397,12 +396,123 @@ body {
     width:600px;
     height: 600px;
     padding: 10px;
+    border-radius: 10px;
 
     background-color: rgba(0, 72, 166, 0.49);
 
     top: 250px;
     left: 1050px;
 }
+
+.descNameWrapper {
+    position: absolute;
+    width: 450px;
+    height: 400px;
+    clip-path: polygon(0% 60%, 100% 100%, 30% 20%);
+    background: lightblue;
+    transform: rotate(-60deg);
+    top: -150px;
+    left: 50px;
+}
+
+.descName {
+    position: absolute;
+    inset: 10px;
+    top: -20px; /* creates inner border */
+    clip-path: polygon(0% 60%, 100% 100%, 30% 20%);
+    background: blue;
+}
+
+.descName span{
+    position: absolute;
+    color: white;
+    right: 130px;
+    bottom: 125px;
+    font-size: 40px;
+    font-weight: bold;
+    transform: rotate(21deg);
+}
+
+.descInfo{
+    color: white;
+    font-size: 35px;
+    font-weight: bolder;
+}
+
+.descInfo1{
+    position: absolute;
+
+    width: 250px;
+
+    top: 275px;
+    transform: rotate(20deg);
+    --rot: 20deg;
+    animation: float 2s ease-in-out infinite;
+}
+
+.descInfo2{
+    position: absolute;
+
+    top: 150px;
+    left: 350px;
+    transform: rotate(0deg);
+    --rot: -0deg;
+    animation: float 4s ease-in-out infinite;
+}
+
+.descInfo3{
+    position: absolute;
+
+    top: 250px;
+    left: 400px;
+    transform: rotate(0deg);
+    --rot: 0deg;
+    animation: float 6s ease-in-out infinite;
+}
+
+.descInfo4{
+    position: absolute;
+
+    width: 200px;
+
+    top: 400px;
+    left: 30px;
+    transform: rotate(-40deg);
+    --rot: -40deg;
+    animation: float 5s ease-in-out infinite;
+}
+
+.descInfo5{
+    position: absolute;
+
+    width: 200px;
+
+    top: 350px;
+    left: 250px;
+    transform: rotate(20deg);
+    --rot: 20deg;
+    animation: float 4s ease-in-out infinite;
+}
+
+.descInfo6{
+    position: absolute;
+
+    top: 540px;
+    left: 200px;
+    --rot: 0deg;
+    animation: float 3s ease-in-out infinite;
+}
+
+.descInfo7{
+    position: absolute;
+
+    top: 425px;
+    left: 400px;
+    transform: rotate(-20deg);
+    --rot: -20deg;
+    animation: float 5s ease-in-out infinite;
+}
+
 
 .time-wrapper{
     position: absolute;
@@ -436,4 +546,42 @@ body {
     bottom: 50px;
     font-size: 45px;
     font-weight: bold;
+}
+
+
+@keyframes float {
+    0%   { transform: translateY(0px) rotate(var(--rot)); }
+    50%  { transform: translateY(-10px) rotate(var(--rot)); }
+    100% { transform: translateY(0px) rotate(var(--rot)); }
+}
+
+/* shared animation state */
+.anim-out {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.anim-in {
+    transform: translateY(-20px);
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+.anim-show {
+    transform: translateY(0px);
+    opacity: 1;
+    transition: all 0.25s ease;
+}
+
+/* IMPORTANT: prevent rotation override conflicts */
+#descNameInfo,
+.descInfo1,
+.descInfo2,
+.descInfo3,
+.descInfo4,
+.descInfo5,
+.descInfo6,
+.descInfo7 {
+    will-change: transform, opacity;
 }

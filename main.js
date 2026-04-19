@@ -219,5 +219,5 @@ function aboutMe() {
         aboutSection.style.opacity = "1";
 
         wrapper.style.opacity = "0";
-    }, 1500);
+    }, 900);
 }

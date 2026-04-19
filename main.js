@@ -198,8 +198,8 @@ function aboutMe() {
     // animate triangle
     wrapper.style.transition = "transform 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
     wrapper.style.transform = `
-        translate(-340px, -130px)
-        scale(2, 1.6)
+        translate(-335px, -155px)
+        scale(2, 2)
         rotate(170deg)
     `;
 

@@ -88,6 +88,11 @@ const buttonQuestions = {
     ]
 };
 
+const mainMenu = document.getElementById("scale-warper");
+const abtMe = document.getElementById("About-Me-Wrapper");
+
+
+
 function animateChange(key) {
     const questions = buttonQuestions[key];
     const title = buttonDescriptions[key];
@@ -173,3 +178,46 @@ function updateTime() {
 
 setInterval(updateTime, 1000);
 updateTime();
+
+function aboutMe() {
+    const wrapper = document.getElementById("aboutMe");
+    const span = wrapper.querySelector("span");
+
+    const aboutSection = document.getElementById("About-Me-Wrapper");
+    const targetEl = aboutSection.querySelector(".abtMeTitle");
+
+    // make sure target is measurable
+    aboutSection.style.opacity = "0";
+    aboutSection.style.display = "block";
+
+    const target = targetEl.getBoundingClientRect();
+    const current = wrapper.getBoundingClientRect();
+
+    const baseRotation = 200; // match CSS
+
+    // animate triangle
+    wrapper.style.transition = "transform 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
+    wrapper.style.transform = `
+        translate(-340px, -130px)
+        scale(2, 1.6)
+        rotate(170deg)
+    `;
+
+    span.style.opacity = "0";
+
+    // fade others
+    document.querySelectorAll('#container > *').forEach(el => {
+        if (el !== wrapper) {
+            el.style.transition = "opacity 0.5s ease";
+            el.style.opacity = "0";
+        }
+    });
+
+    // reveal final state
+    setTimeout(() => {
+        aboutSection.style.transition = "opacity 0.5s ease";
+        aboutSection.style.opacity = "1";
+
+        wrapper.style.opacity = "0";
+    }, 1500);
+}

@@ -3,7 +3,7 @@ const buttons = document.querySelectorAll('button');
 const description = document.getElementById('descNameInfo');
 
 const descSlots = [
-    document.querySelector('.descInfo1'),
+    document.querySelector('.Info1Body'),
     document.querySelector('.descInfo2'),
     document.querySelector('.descInfo3'),
     document.querySelector('.descInfo4'),
@@ -24,7 +24,7 @@ const buttonDescriptions = {
 
 const buttonQuestions = {
     'triangle-1-btn': [
-        'Who am I?',
+        'Who <br> am I?',
         'What’s my story?',
         'What is my passion?',
         'What are my dreams?',
@@ -33,7 +33,7 @@ const buttonQuestions = {
         'What is my end goal?'
     ],
     'triangle-2-btn': [
-        'What have I built?',
+        'What <br> have <br> I built?',
         'What is my best project?',
         'What technologies I use?',
         'What problems have I solved?',
@@ -42,7 +42,7 @@ const buttonQuestions = {
         'What want to work on next?'
     ],
     'triangle-3-btn': [
-        'Where have I worked?',
+        'Where <br> have I <br>worked?',
         'What experience do I have?',
         'What skills did I gain?',
         'What challenges did I face?',
@@ -51,7 +51,7 @@ const buttonQuestions = {
         'How have I grown?'
     ],
     'triangle-4-btn': [
-        'What am I studying?',
+        'What <br> am I <br>studying?',
         'What are my best subjects?',
         'What have I achieved?',
         'What skills did school teach me?',
@@ -60,7 +60,7 @@ const buttonQuestions = {
         'What am I learning next?'
     ],
     'triangle-5-btn': [
-        'What’s on my GitHub?',
+        'What’s <br>on my <br>GitHub?',
         'What code have I written?',
         'What are my top repos?',
         'How active am I?',
@@ -69,7 +69,7 @@ const buttonQuestions = {
         'All of my work'
     ],
     'triangle-6-btn': [
-        'What do I do outside work?',
+        'What do <br>I do <br>outside <br>work?',
         'What are my hobbies?',
         'What activities am I in?',
         'What do I enjoy about learning?',
@@ -78,7 +78,7 @@ const buttonQuestions = {
         'What makes me excited?'
     ],
     'triangle-7-btn': [
-        'How can you reach me?',
+        'How can <br>you <br>reach me?',
         'My IP location?',
         'What’s my email?',
         'Am I on social media?',
@@ -111,10 +111,10 @@ function animateChange(key) {
     setTimeout(() => {
 
         // update text AFTER fade out
-        description.textContent = title;
+        description.innerHTML = title;
 
         descSlots.forEach((el, i) => {
-            el.textContent = questions[i] || '';
+            el.innerHTML = questions[i] || '';
         });
 
         // STEP 2: IN (from above)
@@ -186,37 +186,46 @@ function aboutMe() {
     const aboutSection = document.getElementById("About-Me-Wrapper");
     const targetEl = aboutSection.querySelector(".abtMeTitle");
 
-    // make sure target is measurable
+    // show target (but hidden)
     aboutSection.style.opacity = "0";
     aboutSection.style.display = "block";
 
-    const target = targetEl.getBoundingClientRect();
-    const current = wrapper.getBoundingClientRect();
+    // --- STEP 0: reset wrapper ---
+    wrapper.style.transition = "none";
 
-    const baseRotation = 200; // match CSS
+    // --- STEP 1: SPIN IN PLACE ---
+    wrapper.style.transition = "transform 0.6s ease";
+    wrapper.style.transform = "rotate(-120deg)";
 
-    // animate triangle
-    wrapper.style.transition = "transform 0.8s cubic-bezier(0.2, 1, 0.3, 1)";
-    wrapper.style.transform = `
-        translate(-335px, -155px)
-        scale(2, 2)
-        rotate(170deg)
-    `;
+    // --- STEP 2: MOVE + SCALE into position ---
+    setTimeout(() => {
+        wrapper.style.transition = "transform 1.7s cubic-bezier(0.2, 1, 0.3, 1)";
+        wrapper.style.transform = `
+            translate(-1000%, -630%)
+            scale(20, 20)
+        `;
+    }, 200);
 
+    // hide inner text
     span.style.opacity = "0";
 
-    // fade others
+    // fade everything else out
     document.querySelectorAll('#container > *').forEach(el => {
         if (el !== wrapper) {
-            el.style.transition = "opacity 0.5s ease";
+            el.style.transition = "opacity 1s ease";
             el.style.opacity = "0";
         }
     });
 
-    // reveal final state
+    // --- STEP 3: reveal About Me section + title spin ---
     setTimeout(() => {
-        aboutSection.style.transition = "opacity 0.5s ease";
+        // fade in + spin wrapper
         aboutSection.style.opacity = "1";
+        aboutSection.style.transform = "rotate(170deg) scale(1)";
+
+        // title spin (you already have this)
+        targetEl.style.opacity = "1";
+        targetEl.style.transform = "rotate(0deg) scale(1)";
 
         wrapper.style.opacity = "0";
     }, 900);

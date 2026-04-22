@@ -449,31 +449,56 @@ body {
 
     width: 350px;
     height: 200px;
+    background-color: lightblue;
     
     clip-path: polygon(0% 100%, 80% 100%, 55% 0%, 0% 0%);
 
-    font-size: 45px;
-
     top: 35px;
-}
-
-.Info1Body{
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background-color: blue;
 }
 
 
 .descInfo2{
     position: absolute;
 
-    top: 50px;
-    left: 350px;
-    transform: rotate(-20deg);
-    --rot: -20deg;
-    animation: float 4s ease-in-out infinite;
+    width: 350px;
+    height: 200px;
+    background-color: lightblue;
+    
+    clip-path: polygon(10% 80%, 15% 100%, 100% 100%, 100% 0%, 70% 0%);
+
+    top: 35px;
+    left: 250px;
 }
+
+.Info1Body{
+    width: 99%;
+    height: 99%;
+    position: absolute;
+
+    clip-path: polygon(0% 100%, 80% 100%, 55% 0%, 0% 0%);
+
+    left: 4px;
+    top: 4px;
+    background-color: blue;
+    font-size: 45px;
+}
+
+.Info2Body{
+    width: 99%;
+    height: 99%;
+    position: absolute;
+
+    clip-path: polygon(10% 80%, 15% 100%, 100% 100%, 100% 0%, 70% 0%);
+
+
+    left: 4px;
+    top: 4px;
+    background-color: blue;
+    font-size: 35px;
+    text-align: right;
+}
+
+
 
 .descInfo3{
     position: absolute;
@@ -543,8 +568,8 @@ body {
 }
 
 .time{
-    width: 125%;
-    height: 125%;
+    width: 130%;
+    height: 130%;
 
     clip-path: polygon(0% 100%, 100% 100%, 10% 0%);
     background-color: blue;
@@ -557,9 +582,10 @@ body {
 .time span{
     position: absolute;
     color: white;
-    right: 295px;
-    bottom: 40px;
+    right: 300px;
+    bottom: 80px;
     font-size: 40px;
+    transform: rotate(20deg);
     font-weight: bold;
 }
 
@@ -591,13 +617,13 @@ body {
 
 /* IMPORTANT: prevent rotation override conflicts */
 #descNameInfo,
-.descInfo1,
-.descInfo2,
-.descInfo3,
-.descInfo4,
-.descInfo5,
-.descInfo6,
-.descInfo7 {
+.Info1,
+.Info2,
+.Info3,
+.Info4,
+.Info5,
+.Info6,
+.Info7 {
     will-change: transform, opacity;
 }
 

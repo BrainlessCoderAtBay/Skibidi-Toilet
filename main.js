@@ -171,54 +171,68 @@
     setInterval(updateTime, 1000);
     updateTime();
 
-    function aboutMe() {
-        const wrapper = document.getElementById("aboutMe");
-        const span = wrapper.querySelector("span");
+function aboutMe() {
+    const wrapper = document.getElementById("aboutMe");
+    const span = wrapper.querySelector("span");
 
-        const aboutSection = document.getElementById("About-Me-Wrapper");
-        const targetEl = aboutSection.querySelector(".abtMeTitle");
+    const aboutSection = document.getElementById("About-Me-Wrapper");
+    const targetEl = aboutSection.querySelector(".abtMeTitle");
 
-        // show target (but hidden)
-        aboutSection.style.opacity = "0";
-        aboutSection.style.display = "block";
+    const abtMeCon = document.getElementById("AboutMeContainer");
+    const abtMeBtn = document.querySelector(".About-Me-Button-Container");
 
-        // --- STEP 0: reset wrapper ---
-        wrapper.style.transition = "none";
+    // --- STEP 0: prep ---
+    aboutSection.style.opacity = "0";
+    abtMeCon.style.opacity = "1";
 
-        // --- STEP 1: SPIN IN PLACE ---
-        wrapper.style.transition = "transform 0.6s ease";
-        wrapper.style.transform = "rotate(-120deg)";
+    wrapper.style.transition = "none";
 
-        // --- STEP 2: MOVE + SCALE into position ---
+    // --- STEP 1: spin in place ---
+    wrapper.style.transition = "transform 0.6s ease";
+    wrapper.style.transform = "rotate(-120deg)";
+
+    // --- STEP 2: move + scale ---
+    setTimeout(() => {
+        wrapper.style.transition = "transform 1.7s cubic-bezier(0.2, 1, 0.3, 1)";
+        wrapper.style.transform = `
+            translate(-1000%, -630%)
+            scale(20, 20)
+        `;
+    }, 200);
+
+    // hide text
+    span.style.opacity = "0";
+
+    // fade out main menu
+    document.querySelectorAll('#container > *').forEach(el => {
+        if (el !== wrapper) {
+            el.style.transition = "opacity 1s ease";
+            el.style.opacity = "0";
+        }
+    });
+
+    // --- STEP 3: reveal About Me ---
+    setTimeout(() => {
+
+        // show wrapper
+        aboutSection.style.opacity = "1";
+        aboutSection.style.transform = "rotate(170deg) scale(1)";
+
+        // title spin
+        targetEl.style.opacity = "1";
+        targetEl.style.transform = "rotate(0deg) scale(1)";
+
+        // 🔥 THIS is the important part
+        // trigger CSS animation for buttons
         setTimeout(() => {
-            wrapper.style.transition = "transform 1.7s cubic-bezier(0.2, 1, 0.3, 1)";
-            wrapper.style.transform = `
-                translate(-1000%, -630%)
-                scale(20, 20)
-            `;
-        }, 200);
+            abtMeBtn.classList.add("show");
+        }, 200); // slight delay so it syncs with title
 
-        // hide inner text
-        span.style.opacity = "0";
+        wrapper.style.opacity = "0";
 
-        // fade everything else out
-        document.querySelectorAll('#container > *').forEach(el => {
-            if (el !== wrapper) {
-                el.style.transition = "opacity 1s ease";
-                el.style.opacity = "0";
-            }
-        });
+    }, 900);
+}
 
-        // --- STEP 3: reveal About Me section + title spin ---
-        setTimeout(() => {
-            // fade in + spin wrapper
-            aboutSection.style.opacity = "1";
-            aboutSection.style.transform = "rotate(170deg) scale(1)";
-
-            // title spin (you already have this)
-            targetEl.style.opacity = "1";
-            targetEl.style.transform = "rotate(0deg) scale(1)";
-
-            wrapper.style.opacity = "0";
-        }, 900);
-    }
+function returnAboutMe() {
+    alert("This works");
+}

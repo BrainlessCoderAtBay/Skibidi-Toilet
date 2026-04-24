@@ -8,8 +8,7 @@
         document.querySelector('.Info3Body'),
         document.querySelector('.Info4Body'),
         document.querySelector('.Info5Body'),
-        document.querySelector('.Info6Body'),
-        document.querySelector('.Info7Body'),
+        document.querySelector('.Info6Body')
     ];
 
     const buttonDescriptions = {
@@ -27,63 +26,56 @@
             'Who <br> am I?',
             'What’s<br> my story?',
             'What is my passion?',
-            'What are my dreams?',
-            'Memento Mori',
-            'What is my role?',
+            'What are <br> my dreams?',
+            'What <br> is my <br> role?',
             'What is my end goal?'
         ],
         'triangle-2-btn': [
             'What <br> have <br> I built?',
             'What <br> is my <br> best project?',
-            'What technologies I use?',
-            'What problems have I solved?',
-            'What am I proud of?',
-            'What am I currently working on?',
-            'What want to work on next?'
+            'What technologies <br> I used?',
+            'What am I <br> currently <br> working on?',
+            'What <br> am I <br> proud <br> of?',
+            'What I want to work on next?'
         ],
         'triangle-3-btn': [
             'Where <br> have I <br>worked?',
-            'What <br>experience <br> do I have?',
+            'What <br>skill set <br> do I have?',
             'What skills did I gain?',
-            'What challenges did I face?',
-            'What did I learn?',
-            'What roles have I had?',
-            'How have I grown?'
+            'What <br> challenges <br> did I face?',
+            'What <br> did I <br> learn?',
+            'My past <br> positions'
         ],
         'triangle-4-btn': [
             'What <br> am I <br>studying?',
             'What <br> are my <br>best <br> subjects?',
-            'What have I achieved?',
-            'What skills did school teach me?',
-            'What are my academic goals?',
-            'What certifications do I have?',
+            'What are my academic <br>goals?',
+            'What <br> skills <br> did school <br> teach me?',
+            'What <br> have I attained?',
             'What am I learning next?'
         ],
         'triangle-5-btn': [
             'What’s <br>on my <br>GitHub?',
             'What <br>code have <br>I written?',
-            'What are my top repos?',
-            'How active am I?',
-            'What languages do I use?',
-            'What projects are public?',
+            'What are my top repositories?',
+            'How <br> active am I?',
+            'How <br> long <br> have I coded?',
             'All of my work'
         ],
         'triangle-6-btn': [
             'What do <br>I do <br>outside <br>work?',
             'What <br> are my <br> hobbies?',
             'What activities am I in?',
-            'What do I enjoy about learning?',
-            'How do I spend my time?',
-            'What are my interests?',
+            'What do I <br> enjoy about learning?',
+            'How do <br> I spend <br> my time?',
             'What makes me excited?'
         ],
         'triangle-7-btn': [
             'How can <br>you <br>reach me?',
             'My IP <br> location?',
-            'What’s my email?',
-            'Am I on social media?',
-            'When can you reach out?',
-            'Connections',
+            'What’s my <br> email?',
+            'When <br> can you <br> reach out?',
+            'Links',
             'Spotify???'
         ]
     };

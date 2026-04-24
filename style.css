@@ -727,3 +727,70 @@ body {
     left: 400px;
     top: 90px;
 }
+
+#AboutMeContainer{
+    opacity: 0;
+}
+
+.About-Me-Button-Container > div {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: transform 0.6s ease, opacity 0.6s ease;
+}
+
+.About-Me-Button-Container.show > div {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.float {
+    animation: floatBtn 4s ease-in-out infinite;
+}
+
+
+@keyframes floatBtn {
+    0%   { transform: translateY(0px); }
+    50%  { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.AbtBtn1 {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    clip-path: polygon(80% 0%, 90% 30%, 45% 50%, 20% 0%);
+    background-color: lightblue;
+    bottom: -90px;
+    right: 10px;
+}
+
+.MeBtn1 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(80% 0%, 90% 30%, 45% 50%, 20% 0%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    bottom: 4px;
+    left: 2px;
+}
+
+.MeBtn1 span{
+    position: absolute;
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    top: 10px;
+    right: 30px;
+    transform: rotate(12deg);
+}
+
+
+.MeBtn1:hover{
+    background: white;
+}
+
+.MeBtn1:hover span{
+    color: blue;
+}

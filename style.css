@@ -762,6 +762,7 @@ body {
     background-color: lightblue;
     bottom: -90px;
     right: 10px;
+    
 }
 
 .MeBtn1 {
@@ -793,4 +794,52 @@ body {
 
 .MeBtn1:hover span{
     color: blue;
+}
+
+
+.AbtBtn2 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    clip-path: polygon(95% 10%, 90% 40%, 50% 45%, 30% 10%, 75% 0%);
+    background-color: lightblue;
+    bottom: 210px;
+    right: 540px;
+}
+
+.MeBtn2 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(95% 10%, 90% 40%, 50% 45%, 30% 10%, 75% 0%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.MeBtn2 span{
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    top: 80px;
+    right: 80px;
+    transform: rotate(-30deg);
+    
+    transition: all 0.25s ease;
+}
+
+
+.MeBtn2:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.MeBtn2:hover span{
+    color: blue;
+    transform: rotate(20deg) scale(1.3) translateY(10%);
 }

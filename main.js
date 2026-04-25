@@ -171,68 +171,123 @@
     setInterval(updateTime, 1000);
     updateTime();
 
+
+
+
+let currentView = "menu";
+let animating = false;
+
+
+//About Me Transition
 function aboutMe() {
+    if (animating || currentView === "about") return;
+    animating = true;
+    currentView = "about";
+
     const wrapper = document.getElementById("aboutMe");
     const span = wrapper.querySelector("span");
 
     const aboutSection = document.getElementById("About-Me-Wrapper");
-    const targetEl = aboutSection.querySelector(".abtMeTitle");
-
+    const title = aboutSection.querySelector(".abtMeTitle");
     const abtMeCon = document.getElementById("AboutMeContainer");
     const abtMeBtn = document.querySelector(".About-Me-Button-Container");
 
-    // --- STEP 0: prep ---
-    aboutSection.style.opacity = "0";
-    abtMeCon.style.opacity = "1";
-
-    wrapper.style.transition = "none";
-
-    // --- STEP 1: spin in place ---
-    wrapper.style.transition = "transform 0.6s ease";
-    wrapper.style.transform = "rotate(-120deg)";
-
-    // --- STEP 2: move + scale ---
-    setTimeout(() => {
-        wrapper.style.transition = "transform 1.7s cubic-bezier(0.2, 1, 0.3, 1)";
-        wrapper.style.transform = `
-            translate(-1000%, -630%)
-            scale(20, 20)
-        `;
-    }, 200);
-
-    // hide text
+    // hide menu text
     span.style.opacity = "0";
 
-    // fade out main menu
     document.querySelectorAll('#container > *').forEach(el => {
         if (el !== wrapper) {
-            el.style.transition = "opacity 1s ease";
+            el.style.transition = "opacity 0.8s ease";
             el.style.opacity = "0";
         }
     });
 
-    // --- STEP 3: reveal About Me ---
+    // animate button
+    wrapper.style.transition = "transform 15s cubic-bezier(0.2, 1, 0.3, 1)";
+    wrapper.style.transform = "translate(-1000%, -630%) scale(20) rotate(320deg)";
+
     setTimeout(() => {
+        abtMeCon.style.opacity = "1";
 
-        // show wrapper
-        aboutSection.style.opacity = "1";
+        // TITLE RESET + SPIN
+        title.style.transition = "none";
+        title.style.opacity = "0";
+        title.style.transform = "rotate(-360deg) scale(0.3)";
+        title.offsetHeight;
+
+        title.style.transition = "transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease";
+        title.style.transform = "rotate(0deg) scale(1)";
+        title.style.opacity = "1";
+
+        // WRAPPER
+        aboutSection.style.transition = "none";
+        aboutSection.style.transform = "rotate(-360deg) scale(0.5)";
+        aboutSection.offsetHeight;
+
+        aboutSection.style.transition = "transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease";
         aboutSection.style.transform = "rotate(170deg) scale(1)";
+        aboutSection.style.opacity = "1";
 
-        // title spin
-        targetEl.style.opacity = "1";
-        targetEl.style.transform = "rotate(0deg) scale(1)";
-
-        // 🔥 THIS is the important part
-        // trigger CSS animation for buttons
         setTimeout(() => {
             abtMeBtn.classList.add("show");
-        }, 200); // slight delay so it syncs with title
-
-        wrapper.style.opacity = "0";
+            wrapper.style.opacity = "0";
+            animating = false;
+        }, 300);
 
     }, 900);
 }
 
 function returnAboutMe() {
-    alert("This works");
+    if (animating || currentView === "menu") return;
+    animating = true;
+    currentView = "menu";
+
+    const wrapper = document.getElementById("aboutMe");
+    const aboutSection = document.getElementById("About-Me-Wrapper");
+    const abtMeCon = document.getElementById("AboutMeContainer");
+    const title = aboutSection.querySelector(".abtMeTitle");
+    const abtMeBtn = document.querySelector(".About-Me-Button-Container");
+
+    const span = wrapper.querySelector("span");
+
+    // OUT animation (title + wrapper)
+    aboutSection.style.transition = "transform 0.8s ease, opacity 0.5s ease";
+    aboutSection.style.transform = "translate(1200px, -400px) rotate(360deg) scale(0.3)";
+    aboutSection.style.opacity = "0";
+
+    title.style.transition = "transform 0.8s ease, opacity 0.5s ease";
+    title.style.transform = "rotate(360deg) scale(0.3)";
+    title.style.opacity = "0";
+
+    abtMeCon.style.transition = "opacity 0.6s ease";
+    abtMeCon.style.opacity = "0";
+
+    // reset triangle BEFORE fade-in
+    wrapper.style.transition = "none";
+    wrapper.style.removeProperty("transform");
+    wrapper.style.opacity = "0";
+
+    wrapper.offsetHeight;
+
+    // fade menu back in
+    setTimeout(() => {
+        document.querySelectorAll('#container > *').forEach(el => {
+            el.style.transition = "opacity 1s ease";
+            el.style.opacity = "1";
+        });
+
+        const wrapper = document.getElementById("aboutMe");
+        const span = wrapper.querySelector("span");
+
+        span.style.opacity = "1";
+
+        abtMeBtn.classList.remove("show");
+
+        setTimeout(() => {
+            animating = false;
+        }, 600);
+
+    }, 500);
 }
+
+//Projects Transition

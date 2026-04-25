@@ -290,4 +290,13 @@ function returnAboutMe() {
     }, 500);
 }
 
+//About Me info Box
+function abtMeInfo1(){
+    alert("My story");
+}
+
+function abtMeInfo2(){
+    alert("Me Myself & I");
+}
+
 //Projects Transition

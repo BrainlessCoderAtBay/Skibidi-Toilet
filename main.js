@@ -299,4 +299,23 @@ function abtMeInfo2(){
     alert("Me Myself & I");
 }
 
+function abtMeInfo3(){
+    alert("Dreams and Ambition");
+}
+
+function abtMeInfo4(){
+    alert("Me Myself & I");
+}
+
+function abtMeInfo5(){
+    alert("My story");
+}
+
+function abtMeInfo6(){
+    alert("Me Myself & I");
+}
+
+function abtMeInfo7(){
+    alert("End Goals");
+}
 //Projects Transition

@@ -557,13 +557,13 @@ body {
     position: absolute;
 
     width: 190px;
-    height: 175px;
+    height: 170px;
 
     background-color: lightblue;
 
     clip-path: polygon(0% 100%, 100% 100%, 70% 20%, 100% 0%, 0% 0%);
 
-    top: 440px;
+    top: 445px;
     left: 10px;
 }
 
@@ -585,13 +585,13 @@ body {
     position: absolute;
 
     width: 430px;
-    height: 175px;
+    height: 170px;
 
     background-color: lightblue;
 
     clip-path: polygon(12% 100%, 100% 100%, 100% 0%, 15% 0%, 0% 20%);
 
-    top: 440px;
+    top: 445px;
     left: 170px;
 }
 
@@ -758,6 +758,8 @@ body {
     100% { transform: translateY(0px); }
 }
 
+/*About Me Buttons */
+
 .AbtBtn1 {
     position: absolute;
     width: 200px;
@@ -893,4 +895,97 @@ body {
 .MeBtn3:hover span{
     color: blue;
     transform: rotate(34deg) scale(1.4) translateY(5%) translateX(9%);
+}
+
+.AbtBtn8 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    clip-path: polygon(50% 0%, 70% 20%, 50% 50%, 20% 40%, 30% 30%, 30% 0%);
+    background-color: lightblue;
+    top: 400px;
+    right: 50px;
+}
+
+.MeBtn8 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(50% 0%, 70% 20%, 50% 50%, 20% 40%, 30% 30%, 30% 0%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.MeBtn8 span{
+    position: absolute;
+    font-size: 70px;
+    font-weight: bold;
+    color: white;
+    top: 100px;
+    right: 225px;
+    transform: rotate(30deg);
+    
+    transition: all 0.25s ease;
+}
+
+.MeBtn8:hover{
+    background: white;
+    transform: scale(1.0) skewY(2deg);
+}
+
+.MeBtn8:hover span{
+    color: blue;
+    transform: rotate(-35deg) scale(1.2) translateX(-5%) translateY(30%);
+}
+
+.AbtBtn4 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    clip-path: polygon(10% 10%, 80% 10%, 60% 45%);
+    background-color: lightblue;
+    top: 300px;
+    left: 150px;
+}
+
+.MeBtn4 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(10% 10%, 80% 10%, 60% 45%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.MeBtn4 span{
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    top: 100px;
+    left: 130px;
+    transform: rotate(30deg);
+    
+    transition: all 0.25s ease;
+}
+
+
+.MeBtn4:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.MeBtn4:hover span{
+    color: blue;
+    transform: rotate(0deg) scale(1.5) translateY(-40%) translateX(25%);
 }

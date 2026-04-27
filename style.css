@@ -811,8 +811,8 @@ body {
     height: 500px;
     clip-path: polygon(95% 10%, 90% 40%, 50% 45%, 30% 10%, 75% 0%);
     background-color: lightblue;
-    bottom: 210px;
-    left: 440px;
+    top: 8%;
+    left: 35%;
 }
 
 .MeBtn2 {
@@ -1091,7 +1091,7 @@ body {
     clip-path: polygon(100% 40%, 80% 70%, 30% 60%, 20% 10%, 70% 0%);
     background-color: lightblue;
     top: 275px;
-    left: 625px;
+    right: 30%;
 }
 
 .MeBtn7 {

@@ -27,7 +27,7 @@
             'What’s<br> my story?',
             'What is my passion?',
             'What are <br> my dreams?',
-            'What <br> is my <br> role?',
+            'Bucket <br> list',
             'What is my end goal?'
         ],
         'triangle-2-btn': [
@@ -304,15 +304,15 @@ function abtMeInfo3(){
 }
 
 function abtMeInfo4(){
-    alert("Me Myself & I");
+    alert("Bucket List");
 }
 
 function abtMeInfo5(){
-    alert("My story");
+    alert("Passions");
 }
 
 function abtMeInfo6(){
-    alert("Me Myself & I");
+    alert("Weird Facts");
 }
 
 function abtMeInfo7(){

@@ -684,6 +684,8 @@ body {
 }
 
 /*About Me*/
+
+
 #About-Me-Wrapper{
     opacity: 0;
     pointer-events: none;
@@ -872,6 +874,7 @@ body {
     left: 7px;
     
     transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+    transform: rotate(0deg) translateZ(0); /* 👈 anchor it */
 }
 
 .MeBtn3 span{
@@ -904,7 +907,7 @@ body {
     clip-path: polygon(50% 0%, 70% 20%, 50% 50%, 20% 40%, 30% 30%, 30% 0%);
     background-color: lightblue;
     top: 400px;
-    right: 50px;
+    right: -10px;
 }
 
 .MeBtn8 {
@@ -979,7 +982,6 @@ body {
     transition: all 0.25s ease;
 }
 
-
 .MeBtn4:hover{
     background: white;
     transform: scale(1.0) skewX(-2deg);
@@ -989,3 +991,143 @@ body {
     color: blue;
     transform: rotate(0deg) scale(1.5) translateY(-40%) translateX(25%);
 }
+
+.AbtBtn5 {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    clip-path: polygon(0% 0%, 70% 40%, 20% 50%);
+    background-color: lightblue;
+    top: 400px;
+    left: 50px;
+}
+
+.MeBtn5 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(0% 0%, 70% 40%, 20% 50%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.MeBtn5 span{
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    top: 100px;
+    left: 30px;
+    transform: rotate(30deg);
+    
+    transition: all 0.25s ease;
+}
+
+.MeBtn5:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.MeBtn5:hover span{
+    color: blue;
+    transform: rotate(30deg) scale(1.2) translateY(0%) translateX(5%);
+}
+
+.AbtBtn6 {
+    position: absolute;
+    width: 500px;
+    height: 500px;
+    clip-path: polygon(80% 20%, 100% 50%, 0% 50%, 30% 10%);
+    background-color: lightblue;
+    top: 475px;
+    left: 500px;
+}
+
+.MeBtn6 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(80% 20%, 100% 50%, 0% 50%, 30% 10%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.MeBtn6 span{
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    left: 150px;
+    top: 100px;
+    transform: rotate(15deg);
+    
+    transition: all 0.25s ease;
+}
+
+.MeBtn6:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.MeBtn6:hover span{
+    color: blue;
+    transform: rotate(0deg) scale(1.5) translateY(80%) translateX(-10%);
+}
+
+.AbtBtn7 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    clip-path: polygon(100% 40%, 80% 70%, 30% 60%, 20% 10%, 70% 0%);
+    background-color: lightblue;
+    top: 275px;
+    left: 625px;
+}
+
+.MeBtn7 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(100% 40%, 80% 70%, 30% 60%, 20% 10%, 70% 0%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.MeBtn7 span{
+    position: absolute;
+    font-size: 50px;
+    font-weight: bold;
+    color: white;
+    left: 125px;
+    top: 80px;
+    transform: rotate(15deg);
+    
+    transition: all 0.25s ease;
+}
+
+.MeBtn7:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.MeBtn7:hover span{
+    color: blue;
+    transform: rotate(0deg) scale(1.1) translateY(60%) translateX(-4%);
+}
+
+/*Project*/

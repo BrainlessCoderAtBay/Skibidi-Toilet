@@ -237,59 +237,6 @@ function aboutMe() {
     }, 900);
 }
 
-function returnAboutMe() {
-    if (animating || currentView === "menu") return;
-    animating = true;
-    currentView = "menu";
-
-    const wrapper = document.getElementById("aboutMe");
-    const aboutSection = document.getElementById("About-Me-Wrapper");
-    const abtMeCon = document.getElementById("AboutMeContainer");
-    const title = aboutSection.querySelector(".abtMeTitle");
-    const abtMeBtn = document.querySelector(".About-Me-Button-Container");
-
-    const span = wrapper.querySelector("span");
-
-    // OUT animation (title + wrapper)
-    aboutSection.style.transition = "transform 0.8s ease, opacity 0.5s ease";
-    aboutSection.style.transform = "translate(1200px, -400px) rotate(360deg) scale(0.3)";
-    aboutSection.style.opacity = "0";
-
-    title.style.transition = "transform 0.8s ease, opacity 0.5s ease";
-    title.style.transform = "rotate(360deg) scale(0.3)";
-    title.style.opacity = "0";
-
-    abtMeCon.style.transition = "opacity 0.6s ease";
-    abtMeCon.style.opacity = "0";
-
-    // reset triangle BEFORE fade-in
-    wrapper.style.transition = "none";
-    wrapper.style.removeProperty("transform");
-    wrapper.style.opacity = "0";
-
-    wrapper.offsetHeight;
-
-    // fade menu back in
-    setTimeout(() => {
-        document.querySelectorAll('#container > *').forEach(el => {
-            el.style.transition = "opacity 1s ease";
-            el.style.opacity = "1";
-        });
-
-        const wrapper = document.getElementById("aboutMe");
-        const span = wrapper.querySelector("span");
-
-        span.style.opacity = "1";
-
-        abtMeBtn.classList.remove("show");
-
-        setTimeout(() => {
-            animating = false;
-        }, 600);
-
-    }, 500);
-}
-
 //About Me info Box
 const aboutMeTablet = document.getElementById('aboutMeTablet');
 const aboutMeTabletTitle = document.getElementById('aboutMeTabletTitle');
@@ -436,4 +383,132 @@ function returnAboutMe() {
 
     }, 500);
 }
-//Projects Transition
+//Academics Transition
+function academics() {
+    if (animating || currentView === "academics") return;
+    animating = true;
+    currentView = "academics";
+
+    const wrapper = document.getElementById("academics");
+    const academicsCon = document.getElementById("AcademicsContainer");
+    const academicsSection = document.getElementById("Academics-Wrapper");
+    const academicsBtn = document.querySelector(".Academics-Button-Container");
+
+    const title = academicsSection.querySelector(".acadTitle");
+
+    // SHOW container FIRST
+    academicsCon.style.display = "block";
+    academicsCon.style.opacity = "0";
+
+    // prepare menu fade
+    const menuItems = Array.from(document.querySelectorAll('#container > *'));
+    menuItems.forEach(el => {
+        if (el !== wrapper) {
+            el.style.transition = "opacity 0.8s ease";
+        }
+    });
+
+    requestAnimationFrame(() => {
+        menuItems.forEach(el => {
+            if (el !== wrapper) el.style.opacity = "0";
+        });
+    });
+
+    // big zoom animation from menu button
+    wrapper.style.transition = "transform 2s cubic-bezier(0.2, 1, 0.3, 1)";
+    wrapper.style.transform = "translate(-300%, -100%) scale(2) rotate(120deg)";
+
+    setTimeout(() => {
+
+        // fade in container
+        academicsCon.style.transition = "opacity 0.4s ease";
+        academicsCon.style.opacity = "1";
+
+        // reset title animation
+        title.style.transition = "none";
+        title.style.opacity = "0";
+        title.style.transform = "rotate(-360deg) scale(0.3)";
+        title.offsetHeight;
+
+        title.style.transition = "transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease";
+        title.style.transform = "rotate(0deg) scale(1)";
+        title.style.opacity = "1";
+
+        // wrapper animation
+        academicsSection.style.transition = "none";
+        academicsSection.style.transform = "rotate(-360deg) scale(0.5)";
+        academicsSection.offsetHeight;
+
+        academicsSection.style.transition =
+            "transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease";
+
+        academicsSection.style.transform = "rotate(170deg) scale(1)";
+        academicsSection.style.opacity = "1";
+
+        // IMPORTANT: force button animation AFTER layout is ready
+        requestAnimationFrame(() => {
+            academicsBtn.classList.add("show");
+        });
+
+        setTimeout(() => {
+            wrapper.style.opacity = "0";
+            animating = false;
+        }, 300);
+
+    }, 600);
+}
+
+function returnAcademics() {
+    if (animating || currentView === "menu") return;
+    animating = true;
+    currentView = "menu";
+
+    const wrapper = document.getElementById("academics");
+    const academicsSection = document.getElementById("Academics-Wrapper");
+    const academicsCon = document.getElementById("AcademicsContainer");
+    const title = academicsSection.querySelector(".acadTitle");
+    const academicsBtn = document.querySelector(".Academics-Button-Container");
+
+    const span = wrapper.querySelector("span");
+
+    // OUT animation (title + wrapper)
+    academicsSection.style.transition = "transform 0.8s ease, opacity 0.5s ease";
+    academicsSection.style.transform = "translate(1200px, -400px) rotate(360deg) scale(0.3)";
+    academicsSection.style.opacity = "0";
+
+    title.style.transition = "transform 0.8s ease, opacity 0.5s ease";
+    title.style.transform = "rotate(360deg) scale(0.3)";
+    title.style.opacity = "0";
+
+    academicsCon.style.transition = "opacity 0.6s ease";
+    academicsCon.style.opacity = "0";
+
+    // reset triangle BEFORE fade-in
+    wrapper.style.transition = "none";
+    wrapper.style.removeProperty("transform");
+    wrapper.style.opacity = "0";
+
+    wrapper.offsetHeight;
+
+    // fade menu back in
+    setTimeout(() => {
+        academicsCon.style.display = "none";
+
+        document.querySelectorAll('#container > *').forEach(el => {
+            el.style.transition = "opacity 1s ease";
+            el.style.opacity = "1";
+        });
+
+        const wrapper = document.getElementById("academics");
+        const span = wrapper.querySelector("span");
+
+        span.style.opacity = "1";
+
+        academicsBtn.classList.remove("show");
+
+        setTimeout(() => {
+            animating = false;
+        }, 600);
+
+    }, 500);
+}

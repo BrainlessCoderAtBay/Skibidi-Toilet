@@ -242,6 +242,16 @@ const aboutMeTablet = document.getElementById('aboutMeTablet');
 const aboutMeTabletTitle = document.getElementById('aboutMeTabletTitle');
 const aboutMeTabletText = document.getElementById('aboutMeTabletText');
 
+const academicsTablet = document.getElementById('academicsTablet');
+const academicsTabletTitle = document.getElementById('academicsTabletTitle');
+const academicsStat1Label = document.getElementById('academicsStat1Label');
+const academicsStat1Value = document.getElementById('academicsStat1Value');
+const academicsStat2Label = document.getElementById('academicsStat2Label');
+const academicsStat2Value = document.getElementById('academicsStat2Value');
+const academicsStat3Card = document.getElementById('academicsStat3Card');
+const academicsStat3Label = document.getElementById('academicsStat3Label');
+const academicsStat3Value = document.getElementById('academicsStat3Value');
+
 const aboutMeButtonContent = {
     abtMeInfo1: {
         title: 'My Story',
@@ -273,6 +283,63 @@ const aboutMeButtonContent = {
     }
 };
 
+const academicsButtonContent = {
+    acadInfo1: {
+        title: 'English',
+        stats: [
+            { label: 'ENG2D1', value: '86' },
+            { label: 'NBE3U1', value: '92' },
+            { label: 'X', value: '80' }
+        ]
+    },
+    acadInfo2: {
+        title: 'Mathematics',
+        stats: [
+            { label: 'MPM2D1', value: '97' },
+            { label: 'MCR3U1', value: '90' },
+            { label: 'X', value: '75' }
+        ]
+    },
+    acadInfo3: {
+        title: 'Chemistry',
+        stats: [
+            { label: 'SCH3U1', value: '91' },
+            { label: 'X', value: '60' }
+        ]
+    },
+    acadInfo4: {
+        title: 'Physics',
+        stats: [
+            { label: 'X', value: '77' },
+            { label: 'X', value: '69' }
+        ]
+    },
+    acadInfo5: {
+        title: 'Computer Science',
+        stats: [
+            { label: 'ICD2O1', value: '84' },
+            { label: 'ISC3U1', value: '98' },
+            { label: 'X', value: '88' }
+        ]
+    },
+    acadInfo6: {
+        title: 'Computer Engineering',
+        stats: [
+            { label: 'TEJ2O1', value: '90' },
+            { label: 'X', value: '72' },
+            { label: 'X', value: '78' }
+        ]
+    },
+    acadInfo7: {
+        title: 'Other',
+        stats: [
+            { label: 'TCJ2O1', value: '85' },
+            { label: 'GLC2OH', value: '93' },
+            { label: 'CHV2OH', value: '89' }
+        ]
+    }
+};
+
 function showAboutMeTablet(key) {
     if (!aboutMeTablet) return;
     const content = aboutMeButtonContent[key] || {};
@@ -286,6 +353,39 @@ function hideAboutMeTablet() {
     aboutMeTablet.classList.remove('show');
 }
 
+function showAcademicsTablet(key) {
+    if (!academicsTablet) return;
+    const content = academicsButtonContent[key] || {};
+    academicsTabletTitle.textContent = content.title || 'Academics';
+
+    const stats = content.stats || [
+        { label: 'Stat 1', value: '0' },
+        { label: 'Stat 2', value: '0' }
+    ];
+
+    academicsStat1Label.textContent = stats[0]?.label || '';
+    academicsStat1Value.textContent = stats[0]?.value || '';
+    academicsStat2Label.textContent = stats[1]?.label || '';
+    academicsStat2Value.textContent = stats[1]?.value || '';
+
+    if (stats[2]) {
+        academicsStat3Card.style.display = '';
+        academicsStat3Label.textContent = stats[2].label;
+        academicsStat3Value.textContent = stats[2].value;
+    } else {
+        academicsStat3Card.style.display = 'none';
+        academicsStat3Label.textContent = '';
+        academicsStat3Value.textContent = '';
+    }
+
+    academicsTablet.classList.add('show');
+}
+
+function hideAcademicsTablet() {
+    if (!academicsTablet) return;
+    academicsTablet.classList.remove('show');
+}
+
 const aboutMeContainer = document.getElementById('AboutMeContainer');
 if (aboutMeContainer) {
     aboutMeContainer.addEventListener('click', (event) => {
@@ -295,9 +395,24 @@ if (aboutMeContainer) {
     });
 }
 
+const academicsContainer = document.getElementById('AcademicsContainer');
+if (academicsContainer) {
+    academicsContainer.addEventListener('click', (event) => {
+        if (!academicsTablet.contains(event.target) && !event.target.closest('button')) {
+            hideAcademicsTablet();
+        }
+    });
+}
+
 if (aboutMeTablet) {
     aboutMeTablet.addEventListener('click', () => {
         hideAboutMeTablet();
+    });
+}
+
+if (academicsTablet) {
+    academicsTablet.addEventListener('click', () => {
+        hideAcademicsTablet();
     });
 }
 
@@ -327,6 +442,34 @@ function abtMeInfo6(){
 
 function abtMeInfo7(){
     showAboutMeTablet('abtMeInfo7');
+}
+
+function acadInfo1(){
+    showAcademicsTablet('acadInfo1');
+}
+
+function acadInfo2(){
+    showAcademicsTablet('acadInfo2');
+}
+
+function acadInfo3(){
+    showAcademicsTablet('acadInfo3');
+}
+
+function acadInfo4(){
+    showAcademicsTablet('acadInfo4');
+}
+
+function acadInfo5(){
+    showAcademicsTablet('acadInfo5');
+}
+
+function acadInfo6(){
+    showAcademicsTablet('acadInfo6');
+}
+
+function acadInfo7(){
+    showAcademicsTablet('acadInfo7');
 }
 
 function returnAboutMe() {
@@ -482,6 +625,8 @@ function returnAcademics() {
 
     academicsCon.style.transition = "opacity 0.6s ease";
     academicsCon.style.opacity = "0";
+
+    hideAcademicsTablet();
 
     // reset triangle BEFORE fade-in
     wrapper.style.transition = "none";

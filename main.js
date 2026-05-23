@@ -80,10 +80,14 @@
         ]
     };
 
-    const mainMenu = document.getElementById("scale-warper");
+    const mainMenu = document.getElementById("scale-wrapper");
+    const menuContainer = document.getElementById("container");
     const abtMe = document.getElementById("About-Me-Wrapper");
 
-
+    function setMainMenuInteractivity(enabled) {
+        if (!menuContainer) return;
+        menuContainer.style.pointerEvents = enabled ? "" : "none";
+    }
 
     function animateChange(key) {
         const questions = buttonQuestions[key];
@@ -183,6 +187,7 @@ function aboutMe() {
     if (animating || currentView === "about") return;
     animating = true;
     currentView = "about";
+    setMainMenuInteractivity(false);
 
     const wrapper = document.getElementById("aboutMe");
     const span = wrapper.querySelector("span");
@@ -513,6 +518,8 @@ function returnAboutMe() {
             el.style.opacity = "1";
         });
 
+        setMainMenuInteractivity(true);
+
         const wrapper = document.getElementById("aboutMe");
         const span = wrapper.querySelector("span");
 
@@ -531,6 +538,7 @@ function academics() {
     if (animating || currentView === "academics") return;
     animating = true;
     currentView = "academics";
+    setMainMenuInteractivity(false);
 
     const wrapper = document.getElementById("academics");
     const academicsCon = document.getElementById("AcademicsContainer");
@@ -643,6 +651,8 @@ function returnAcademics() {
             el.style.transition = "opacity 1s ease";
             el.style.opacity = "1";
         });
+
+        setMainMenuInteractivity(true);
 
         const wrapper = document.getElementById("academics");
         const span = wrapper.querySelector("span");

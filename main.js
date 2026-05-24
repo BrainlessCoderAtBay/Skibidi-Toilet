@@ -667,3 +667,14 @@ function returnAcademics() {
 
     }, 500);
 }
+
+function github() {
+    window.open('https://github.com/BrainlessCoderAtBay')
+}
+
+
+//Projects
+
+function projects() {
+    
+}

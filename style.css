@@ -2398,7 +2398,7 @@ body {
 }
 
 
-/*Project*/
+/*Academics*/
 
 .AcadDesc {
     position: absolute;
@@ -2946,6 +2946,7 @@ body {
     top: 90px;
 }
 
+
 #Academics-Wrapper{
     opacity: 0;
     pointer-events: none;
@@ -2962,4 +2963,83 @@ body {
 
     top: -100px;
     left: -100px;
+}
+
+
+/*Contact*/
+
+#Contact-Container{
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+#Contact-Wrapper{
+    /* mirror Academics wrapper so the title has room to show */
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    clip-path: polygon(15% 0%, 100% 0%, 35% 80%);
+
+    width: 1000px;
+    height: 400px;
+    left: 50%;
+    top: 10%;
+    transform: translate(-50%, -150vh);
+    background: lightblue;
+    z-index: 20;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease;
+}
+
+#Contact-Wrapper.show {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+/* Contact title - same shape as academics title, falls from top */
+.contactTitle{
+    width: 100%;
+    height: 97%;
+    position: relative;
+    background-color: blue;
+    clip-path: polygon(15% 0%, 100% 0%, 35% 80%);
+
+    top: -2px;
+    left: 4px;
+
+    /* start off-screen above the viewport */
+    transform: translateY(-150vh);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1),
+                opacity 0.6s ease;
+}
+.contactTitle.show{
+    transform: translateY(0);
+    opacity: 1;
+}
+.contactTitle span{
+    position: absolute;
+    color: white;
+    font-size: 100px;
+    font-weight: bold;
+    transform: rotate(0deg);
+    left: 250px;
+    top: 40px;
+}
+
+.contactTitle{ z-index: 30; }
+
+/* Contact Button Container - buttons fall and rotate into place */
+.Contact-Button-Container > div {
+    opacity: 0;
+    transform: translateY(40px) rotate(-20deg);
+    transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1),
+                opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.Contact-Button-Container.show > div {
+    opacity: 1;
+    transform: translateY(0) rotate(0deg);
+    pointer-events: auto;
 }

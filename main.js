@@ -672,6 +672,134 @@ function github() {
     window.open('https://github.com/BrainlessCoderAtBay')
 }
 
+// Contact Transition
+function contactTransition() {
+    if (animating || currentView === "contact") return;
+    animating = true;
+    currentView = "contact";
+    setMainMenuInteractivity(false);
+
+    const wrapper = document.querySelector('.triangle-7-wrapper');
+    if (!wrapper) { animating = false; return; }
+    const span = wrapper.querySelector('span');
+
+    const contactCon = document.getElementById('Contact-Container');
+    const contactWrapper = document.getElementById('Contact-Wrapper');
+    const title = contactWrapper ? contactWrapper.querySelector('.contactTitle') : null;
+
+    // hide menu text quickly
+    if (span) span.style.opacity = '0';
+
+    // fade other menu items
+    document.querySelectorAll('#container > *').forEach(el => {
+        if (el !== wrapper) el.style.transition = 'opacity 0.8s ease';
+    });
+    requestAnimationFrame(() => {
+        document.querySelectorAll('#container > *').forEach(el => { if (el !== wrapper) el.style.opacity = '0'; });
+    });
+
+    // drop wrapper down out of frame (slower, rotating while falling)
+    wrapper.style.transition = 'transform 10.6s cubic-bezier(0.2,1,0.3,1), opacity 0.6s ease';
+    wrapper.style.transform = 'translateY(2000px)';
+    wrapper.style.opacity = '0';
+
+    setTimeout(() => {
+        // show contact container and fade in
+        if (contactCon) {
+            contactCon.style.display = 'block';
+            contactCon.style.opacity = '0';
+            contactCon.style.transition = 'opacity 0.4s ease';
+            contactCon.style.opacity = '1';
+        }
+
+        // ensure contact wrapper itself is visible
+        if (contactWrapper) {
+            contactWrapper.classList.remove('show');
+            contactWrapper.offsetHeight;
+            contactWrapper.classList.add('show');
+            contactWrapper.style.pointerEvents = '';
+        }
+
+        // animate contact title falling from top
+        if (title) {
+            title.classList.remove('show');
+            title.offsetHeight;
+            title.classList.add('show');
+        }
+
+        // animate buttons in
+        const contactBtnContainer = document.querySelector('.Contact-Button-Container');
+        if (contactBtnContainer) {
+            requestAnimationFrame(() => {
+                contactBtnContainer.classList.add('show');
+            });
+        }
+
+        setTimeout(() => {
+            animating = false;
+        }, 800);
+    }, 1600);
+}
+
+function returnContact() {
+    if (animating || currentView === "menu") return;
+    animating = true;
+    currentView = "menu";
+
+    const wrapper = document.querySelector('.triangle-7-wrapper');
+    const contactCon = document.getElementById('Contact-Container');
+    const contactWrapper = document.getElementById('Contact-Wrapper');
+    const title = contactWrapper ? contactWrapper.querySelector('.contactTitle') : null;
+
+    // OUT: hide contact content
+    if (contactCon) {
+        contactCon.style.transition = 'opacity 0.5s ease';
+        contactCon.style.opacity = '0';
+    }
+
+    if (title) {
+        title.classList.remove('show');
+    }
+
+    if (contactWrapper) {
+        contactWrapper.classList.remove('show');
+        contactWrapper.style.pointerEvents = 'none';
+    }
+
+    const contactBtnContainer = document.querySelector('.Contact-Button-Container');
+    if (contactBtnContainer) {
+        contactBtnContainer.classList.remove('show');
+    }
+
+    // bring menu back
+    setTimeout(() => {
+        if (contactCon) contactCon.style.display = 'none';
+
+        document.querySelectorAll('#container > *').forEach(el => {
+            el.style.transition = 'opacity 1s ease';
+            el.style.opacity = '1';
+        });
+
+        setMainMenuInteractivity(true);
+
+        if (wrapper) {
+            const span = wrapper.querySelector('span');
+            if (span) span.style.opacity = '1';
+            wrapper.style.transition = 'none';
+            wrapper.style.removeProperty('transform');
+            wrapper.style.opacity = '1';
+        }
+
+        setTimeout(() => {
+            animating = false;
+        }, 600);
+    }, 500);
+}
+
+// wire contact button in main menu
+const contactButton = document.querySelector('.triangle-7-btn');
+if (contactButton) contactButton.addEventListener('click', contactTransition);
+
 
 //Projects
 

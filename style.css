@@ -3043,3 +3043,229 @@ body {
     transform: translateY(0) rotate(0deg);
     pointer-events: auto;
 }
+
+.ContactBtn1{
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    clip-path: polygon(80% 0%, 90% 30%, 45% 50%, 20% 0%);
+    background-color: lightblue;
+    bottom: -90px;
+    right: 10px;
+}
+
+.contactBtn1{
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(80% 0%, 90% 30%, 45% 50%, 20% 0%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    left: 2px;
+}
+
+.contactBtn1 span{
+    position: absolute;
+    font-size: 35px;
+    font-weight: bold;
+    color: white;
+    top: 10px;
+    right: 30px;
+    transform: rotate(12deg);
+}
+
+.contactBtn1:hover{
+    background: white;
+}
+
+.contactBtn1:hover span{
+    color: blue;
+}
+
+.ContactBtn2 {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    clip-path: polygon(85% 0%, 90% 40%, 45% 50%, 30% 20%, 45% 0%);
+    background-color: lightblue;
+    top: 150px;
+    left: -200px;
+}
+
+.contactBtn2 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(85% 0%, 90% 40%, 45% 50%, 30% 20%, 45% 0%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 4px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.contactBtn2 span{
+    position: absolute;
+    font-size: 80px;
+    font-weight: bold;
+    color: white;
+    top: 100px;
+    left: 10px;
+    transform: rotate(-15deg);
+    
+    transition: all 0.25s ease;
+}
+
+.contactBtn2:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.contactBtn2:hover span{
+    color: blue;
+    transform:rotate(15deg) scale(0.4) translateX(-46%) translateY(-140%);
+}
+
+.ContactBtn3 {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    clip-path: polygon(50% 0%, 10% 20%, 70% 45%);
+    background-color: lightblue;
+    top: 100px;
+    right: -100px;
+}
+
+.contactBtn3 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(50% 0%, 10% 20%, 70% 45%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+    transform: rotate(0deg) translateZ(0); /* 👈 anchor it */
+}
+
+.contactBtn3 span{
+    position: absolute;
+    font-size: 70px;
+    font-weight: bold;
+    color: white;
+    top: 75px;
+    left: -90px;
+    transform: rotate(25deg);
+    
+    transition: all 0.25s ease;
+}
+
+.contactBtn3:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.contactBtn3:hover span{
+    color: blue;
+    transform: rotate(25deg) scale(0.6) translateY(-115%) translateX(-2%);
+}
+
+.ContactBtn4 {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    clip-path: polygon(10% 10%, 80% 10%, 60% 45%);
+    background-color: lightblue;
+    top: 350px;
+    right: 100px;
+}
+
+.contactBtn4 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(10% 10%, 80% 10%, 60% 45%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    right: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.contactBtn4 span{
+    position: absolute;
+    font-size: 55px;
+    font-weight: bold;
+    color: white;
+    top: 100px;
+    left: -30px;
+    transform: rotate(35deg);
+    
+    transition: all 0.25s ease;
+}
+
+.contactBtn4:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.contactBtn4:hover span{
+    color: blue;
+    transform: rotate(0deg) scale(1) translateY(-95%) translateX(55%);
+}
+
+.ContactBtn5 {
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    clip-path: polygon(0% 10%, 70% 40%, 30% 50%);
+    background-color: lightblue;
+    top: 375px;
+    left: 400px;
+}
+
+.contactBtn5 {
+    position: absolute;
+    width: 99%;
+    height: 99%;
+    clip-path: polygon(0% 10%, 70% 40%, 30% 50%);
+    background: blue;
+    border: none;
+    cursor: pointer;
+    top: 8px;
+    left: 7px;
+    
+    transition: all 0.25s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.contactBtn5 span{
+    position: absolute;
+    font-size: 60px;
+    font-weight: bold;
+    color: white;
+    top: 135px;
+    left: -45px;
+    transform: rotate(25deg);
+    
+    transition: all 0.25s ease;
+}
+
+.contactBtn5:hover{
+    background: white;
+    transform: scale(1.0) skewX(-2deg);
+}
+
+.contactBtn5:hover span{
+    color: blue;
+    transform: rotate(25deg) scale(1.2) translateY(-80%) translateX(20%);
+}
+

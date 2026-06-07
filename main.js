@@ -785,7 +785,6 @@ function returnContact() {
         if (wrapper) {
             const span = wrapper.querySelector('span');
             if (span) span.style.opacity = '1';
-            wrapper.style.transition = 'none';
             wrapper.style.removeProperty('transform');
             wrapper.style.opacity = '1';
         }

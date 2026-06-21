@@ -803,5 +803,112 @@ if (contactButton) contactButton.addEventListener('click', contactTransition);
 //Projects
 
 function projects() {
-    
+    if (animating || currentView === "projects") return;
+    animating = true;
+    currentView = "projects";
+    setMainMenuInteractivity(false);
+
+    const wrapper = document.querySelector('.triangle-2-wrapper');
+    const span = wrapper.querySelector('span');
+    const projectsCon = document.getElementById('ProjectsContainer');
+    const projectsSection = document.getElementById('Projects-Wrapper');
+    const title = projectsSection.querySelector('.projTitle');
+    const projectsBtn = document.querySelector('.Projects-Button-Container');
+
+    projectsCon.style.display = 'block';
+    projectsCon.style.opacity = '0';
+
+    // main menu
+
+    document.querySelectorAll('#container > *').forEach(el => {
+        if (el !== wrapper) {
+            el.style.transition = 'opacity 0.8s ease';
+            el.style.opacity = '0';
+        }
+    });
+
+
+    //Project button animation (transfrom at the opposite direction to where the longest edge is facing, while also scaling up without rotating)
+    wrapper.style.transition = 'transform 6.9s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.4s ease';
+    wrapper.style.transform = 'translate(-420%, -200%) scale(1.8)';
+
+    // Project Title
+    setTimeout(() => {
+        projectsCon.style.transition = 'opacity 0.4s ease';
+        projectsCon.style.opacity = '1';
+
+        title.style.transition = 'none';
+        title.style.opacity = '0';
+        title.style.transform = 'translateX(-120%) scale(0.3)';
+        title.offsetHeight;
+        title.style.transition = 'transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease';
+        title.style.transform = 'translateX(0) scale(1)';
+        title.style.opacity = '1';
+
+        projectsSection.style.transition = 'none';
+        projectsSection.style.transform = 'scale(0.5)';
+        projectsSection.style.opacity = '0';
+        projectsSection.offsetHeight;
+
+        projectsSection.style.transition = 'transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.5s ease';
+        projectsSection.style.transform = 'scale(1)';
+        projectsSection.style.opacity = '1';
+
+        requestAnimationFrame(() => {
+            if (projectsBtn) projectsBtn.classList.add('show');
+        });
+
+        setTimeout(() => {
+            if (span) span.style.opacity = '0';
+            wrapper.style.opacity = '0';
+            animating = false;
+        }, 300);
+    }, 500);
+}
+
+function returnProjects() {
+    if (animating || currentView === 'menu') return;
+    animating = true;
+    currentView = 'menu';
+
+    const wrapper = document.querySelector('.triangle-2-wrapper');
+    const span = wrapper.querySelector('span');
+    const projectsCon = document.getElementById('ProjectsContainer');
+    const projectsSection = document.getElementById('Projects-Wrapper');
+    const title = projectsSection.querySelector('.projTitle');
+    const projectsBtn = document.querySelector('.Projects-Button-Container');
+
+    projectsSection.style.transition = 'transform 0.8s ease, opacity 0.5s ease';
+    projectsSection.style.transform = 'scale(0.3)';
+    projectsSection.style.opacity = '0';
+
+    title.style.transition = 'transform 0.8s ease, opacity 0.5s ease';
+    title.style.transform = 'scale(0.3)';
+    title.style.opacity = '0';
+
+    projectsCon.style.transition = 'opacity 0.6s ease';
+    projectsCon.style.opacity = '0';
+
+    wrapper.style.transition = 'none';
+    wrapper.style.removeProperty('transform');
+    wrapper.style.opacity = '0';
+    wrapper.offsetHeight;
+
+    setTimeout(() => {
+        if (projectsCon) projectsCon.style.display = 'none';
+
+        document.querySelectorAll('#container > *').forEach(el => {
+            el.style.transition = 'opacity 1s ease';
+            el.style.opacity = '1';
+        });
+
+        setMainMenuInteractivity(true);
+
+        if (span) span.style.opacity = '1';
+        if (projectsBtn) projectsBtn.classList.remove('show');
+
+        setTimeout(() => {
+            animating = false;
+        }, 600);
+    }, 500);
 }

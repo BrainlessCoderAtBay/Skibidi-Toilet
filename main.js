@@ -912,3 +912,62 @@ function returnProjects() {
         }, 600);
     }, 500);
 }
+
+
+const list = document.getElementById("projectList");
+const thumb = document.querySelector(".project-thumb");
+
+function updateThumb() {
+
+    const maxScroll =
+        list.scrollHeight - list.clientHeight;
+
+    const maxThumb =
+        500 - thumb.offsetHeight;
+
+    const ratio =
+        list.scrollTop / maxScroll;
+
+    thumb.style.top =
+        ratio * maxThumb + "px";
+}
+
+list.addEventListener("scroll", updateThumb);
+updateThumb();
+
+let dragging = false;
+
+thumb.addEventListener("mousedown", () => {
+    dragging = true;
+});
+
+document.addEventListener("mouseup", () => {
+    dragging = false;
+});
+
+document.addEventListener("mousemove", e => {
+
+    if(!dragging) return;
+
+    const track =
+        document.querySelector(".project-scrollbar");
+
+    const rect =
+        track.getBoundingClientRect();
+
+    let y =
+        e.clientY - rect.top;
+
+    const max =
+        track.offsetHeight - thumb.offsetHeight;
+
+    y = Math.max(0, Math.min(y, max));
+
+    thumb.style.top = y + "px";
+
+    const ratio = y / max;
+
+    list.scrollTop =
+        ratio *
+        (list.scrollHeight - list.clientHeight);
+});

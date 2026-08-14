@@ -807,6 +807,7 @@ function projects() {
     animating = true;
     currentView = "projects";
     setMainMenuInteractivity(false);
+    resetProjectListToDefault();
 
     const wrapper = document.querySelector('.triangle-2-wrapper');
     const span = wrapper.querySelector('span');
@@ -986,11 +987,23 @@ function resetProjectListToDefault() {
         item.style.removeProperty("transform-origin");
     });
 
+    if (list) {
+        list.scrollTop = 0;
+    }
+
+    if (thumb) {
+        thumb.style.top = '0px';
+        thumb.style.left = '5px';
+    }
+
     projectTitle.textContent = "Select a project";
     projectText.textContent = "Pick any item from the list to view its project details.";
 
     if (list) {
-        requestAnimationFrame(updateProjectItemSizes);
+        requestAnimationFrame(() => {
+            updateThumb();
+            updateProjectItemSizes();
+        });
     }
 }
 

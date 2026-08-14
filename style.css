@@ -3380,12 +3380,12 @@ body {
 /* TRACK */
 .project-scrollbar{
     position:absolute;
-    left:0;
+    left:10px;
     top:40px;
 
     width:25px;
-    height:500px;
-    transform:rotate(10deg);
+    height:485px;
+    transform:rotate(5deg);
 
     background:white;
 
@@ -3402,6 +3402,8 @@ body {
     position:absolute;
     width:100%;
     height:80px;
+    left:5px;
+    transform:rotate(-5.35deg);
 
     background:blue;
 
@@ -3419,11 +3421,21 @@ body {
     position:absolute;
 
     left:40px;
-    top:40px;
+    top:20px;
+
+    transform:rotate(5deg);
 
     width:500px;
-    height:500px;
+    height:595px;
 
+    clip-path:polygon(
+        0% 7%,
+        100% 0%,
+        100% 82%,
+        0% 90%
+    );
+
+    
     overflow-y:scroll;
 
     scrollbar-width:none;
@@ -3433,11 +3445,50 @@ body {
     display:none;
 }
 
-.project-item{
-    width:350px;
-    height:45px;
+.project-description{
+    position:absolute;
+    right:40px;
+    top:60px;
+    width:770px;
+    height:530px;
+    padding:16px;
+    box-sizing:border-box;
+    background: blue;
+    border: 3px solid darkblue;
+    border-radius: 18px;
+    z-index: 2;
+}
 
-    margin-bottom:12px;
+.project-description-header span {
+    display:block;
+    font-size:46px;
+    font-weight:bold;
+    color:white;
+    margin-bottom:10px;
+}
+
+.project-description-body span {
+    display:block;
+    color:white;
+    font-size:18px;
+    line-height:1.5;
+    white-space: pre-wrap;
+}
+
+.project-item{
+    --project-scale: 1;
+    --project-row-gap: 14px;
+    position:relative;
+    width:102%;
+    height:70px;
+
+    left:-15px;
+    margin-top: calc(var(--project-row-gap) + (1.12 - var(--project-scale)) * 18px);
+    margin-bottom: 0;
+
+    transform:rotate(-5deg) scale(var(--project-scale));
+    transform-origin: center left;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
 
     border:none;
     color:white;
@@ -3447,8 +3498,43 @@ body {
 
     clip-path:polygon(
         0% 0%,
-        100% 0%,
-        90% 100%,
+        94.5% 0%,
+        87% 100%,
         0% 100%
     );
+}
+
+.project-item:focus,
+.project-item:focus-visible,
+.project-item.selected {
+    outline: none;
+    background: white;
+    color: blue;
+}
+
+.project-item.selected span,
+.project-item:focus-visible span,
+.project-item:focus span {
+    transform: none;
+    font-weight: 700;
+}
+
+#topProject{
+    margin-top: 40px;
+}
+
+#bottomProject{
+    margin-bottom: 88px;
+}
+
+.project-item:hover:not(.selected),
+.project-item:hover:not(:focus-visible) {
+    background:white;
+    color:blue;
+}
+
+.project-item:hover:not(.selected) span,
+.project-item:hover:not(:focus-visible) span {
+    position:absolute;
+    transform:scale(1.4) translateY(-30%) translateX(-45%);
 }

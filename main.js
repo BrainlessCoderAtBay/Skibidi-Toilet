@@ -895,6 +895,8 @@ function returnProjects() {
     wrapper.offsetHeight;
 
     setTimeout(() => {
+        resetProjectListToDefault();
+
         if (projectsCon) projectsCon.style.display = 'none';
 
         document.querySelectorAll('#container > *').forEach(el => {
@@ -916,6 +918,93 @@ function returnProjects() {
 
 const list = document.getElementById("projectList");
 const thumb = document.querySelector(".project-thumb");
+const projectTitle = document.getElementById("projectTitle");
+const projectText = document.getElementById("projectText");
+
+let projectItems = [];
+
+const projectDescriptions = [
+    { title: "Project 1", text: "Project 1 description goes here." },
+    { title: "Project 2", text: "Project 2 description goes here." },
+    { title: "Project 3", text: "Project 3 description goes here." },
+    { title: "Project 4", text: "Project 4 description goes here." },
+    { title: "Project 5", text: "Project 5 description goes here." },
+    { title: "Project 6", text: "Project 6 description goes here." },
+    { title: "Project 7", text: "Project 7 description goes here." },
+    { title: "Project 8", text: "Project 8 description goes here." },
+    { title: "Project 9", text: "Project 9 description goes here." },
+    { title: "Project 10", text: "Project 10 description goes here." }
+];
+
+function buildProjectList() {
+    if (!list) return;
+
+    list.innerHTML = "";
+    projectItems = [];
+
+    projectDescriptions.forEach((project, index) => {
+        const item = document.createElement("button");
+        item.type = "button";
+        item.className = "project-item";
+
+        if (index === 0) {
+            item.id = "topProject";
+        }
+
+        if (index === projectDescriptions.length - 1) {
+            item.id = "bottomProject";
+        }
+
+        const label = document.createElement("span");
+        label.textContent = project.title;
+        item.appendChild(label);
+
+        item.addEventListener("click", () => {
+            setSelectedProject(index);
+        });
+
+        list.appendChild(item);
+        projectItems.push(item);
+    });
+}
+
+function updateProjectDescription(index) {
+    if (!projectTitle || !projectText) return;
+    const data = projectDescriptions[index] || projectDescriptions[0];
+    projectTitle.textContent = data.title;
+    projectText.textContent = data.text;
+}
+
+let selectedProjectIndex = null;
+
+function resetProjectListToDefault() {
+    selectedProjectIndex = null;
+
+    projectItems.forEach((item) => {
+        item.classList.remove("selected");
+        item.style.removeProperty("transform");
+        item.style.removeProperty("transform-origin");
+    });
+
+    projectTitle.textContent = "Select a project";
+    projectText.textContent = "Pick any item from the list to view its project details.";
+
+    if (list) {
+        requestAnimationFrame(updateProjectItemSizes);
+    }
+}
+
+function setSelectedProject(index) {
+    const cleanIndex = Number.isInteger(index) ? index : 0;
+    selectedProjectIndex = cleanIndex;
+
+    projectItems.forEach((item, itemIndex) => {
+        item.classList.toggle("selected", itemIndex === cleanIndex);
+    });
+
+    updateProjectDescription(cleanIndex);
+    updateProjectItemSizes();
+}
 
 function updateThumb() {
 
@@ -930,10 +1019,61 @@ function updateThumb() {
 
     thumb.style.top =
         ratio * maxThumb + "px";
+
+    thumb.style.left =
+        (5 - ratio * 10) + "px";
 }
 
-list.addEventListener("scroll", updateThumb);
-updateThumb();
+function updateProjectItemSizes() {
+    if (!projectItems.length || !list) return;
+
+    const anchorTop = list.scrollTop + 8;
+    let focusIndex = 0;
+    let bestDistance = Number.POSITIVE_INFINITY;
+
+    projectItems.forEach((item, index) => {
+        const itemTop = item.offsetTop;
+        const distance = Math.abs(itemTop - anchorTop);
+
+        if (distance < bestDistance) {
+            bestDistance = distance;
+            focusIndex = index;
+        }
+    });
+
+    projectItems.forEach((item, index) => {
+        const distance = Math.abs(index - focusIndex);
+        const baseScale = Math.max(0.52, 1.02 - distance * 0.07);
+
+        if (item.classList.contains("selected")) {
+            const selectedScale = baseScale * 1.07;
+            item.style.setProperty("--project-scale", selectedScale.toFixed(3));
+            item.style.transformOrigin = "left center";
+            item.style.transform = `rotate(-5deg) scale(${selectedScale.toFixed(3)}, ${selectedScale.toFixed(3)})`;
+            return;
+        }
+
+        item.style.setProperty("--project-scale", baseScale.toFixed(3));
+        item.style.transformOrigin = "left center";
+        item.style.transform = `rotate(-5deg) scale(${baseScale.toFixed(3)}, ${baseScale.toFixed(3)})`;
+    });
+}
+
+buildProjectList();
+
+projectTitle.textContent = "Select a project";
+projectText.textContent = "Pick any item from the list to view its project details.";
+selectedProjectIndex = null;
+
+list.addEventListener("scroll", () => {
+    updateThumb();
+    requestAnimationFrame(updateProjectItemSizes);
+});
+
+requestAnimationFrame(() => {
+    updateThumb();
+    updateProjectItemSizes();
+});
 
 let dragging = false;
 

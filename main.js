@@ -1189,3 +1189,4 @@ document.addEventListener("mousemove", e => {
 
 
 //Extras
+//New layout for Extras section : IN PROGRESS

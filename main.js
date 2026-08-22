@@ -17,7 +17,7 @@
         'triangle-3-btn': 'Experience',
         'triangle-4-btn': 'Academics',
         'triangle-5-btn': 'Github',
-        'triangle-6-btn': 'Extracurricular',
+        'triangle-6-btn': 'Extras',
         'triangle-7-btn': 'Contact'
     };
 
@@ -63,7 +63,7 @@
             'All of my work'
         ],
         'triangle-6-btn': [
-            'What do <br>I do <br>outside <br>work?',
+            'What do <br>I do <br>in my <br>freetime?',
             'What <br> are my <br> hobbies?',
             'What activities am I in?',
             'What do I <br> enjoy about learning?',
@@ -921,20 +921,33 @@ const list = document.getElementById("projectList");
 const thumb = document.querySelector(".project-thumb");
 const projectTitle = document.getElementById("projectTitle");
 const projectText = document.getElementById("projectText");
+const projectPic1 = document.getElementById("projectPic1");
+const projectPic1Video = document.getElementById("projectPic1Video");
+const projectPic1Fallback = document.getElementById("projectPic1Fallback");
+const projectPic2Image = document.getElementById("projectPic2Image");
+const projectPic2Video = document.getElementById("projectPic2Video");
+const projectPic2Fallback = document.getElementById("projectPic2Fallback");
+
+document.querySelectorAll("video").forEach((video) => {
+    video.autoplay = true;
+    video.muted = true;
+    video.playsInline = true;
+    video.controls = false;
+});
 
 let projectItems = [];
 
 const projectDescriptions = [
-    { title: "Project 1", text: "Project 1 description goes here." },
-    { title: "Project 2", text: "Project 2 description goes here." },
-    { title: "Project 3", text: "Project 3 description goes here." },
-    { title: "Project 4", text: "Project 4 description goes here." },
-    { title: "Project 5", text: "Project 5 description goes here." },
-    { title: "Project 6", text: "Project 6 description goes here." },
-    { title: "Project 7", text: "Project 7 description goes here." },
-    { title: "Project 8", text: "Project 8 description goes here." },
-    { title: "Project 9", text: "Project 9 description goes here." },
-    { title: "Project 10", text: "Project 10 description goes here." }
+    { title: "Spray n' Pray", text: "Project 1 description goes here.", pic1 : "project1_pic1.jpg", pic2: "Resources/ProjectMedia/Spray_n_Pray.mp4" },
+    { title: "RFID", text: "Project 2 description goes here.", pic1 : "project2_pic1.jpg", pic2: "project2_pic2.jpg" },
+    { title: "Mini PC", text: "Project 3 description goes here.", pic1 : "project3_pic1.jpg", pic2: "Resources/ProjectMedia/AbtMe.png" },
+    { title: "PC", text: "Project 4 description goes here.", pic1 : "project4_pic1.jpg", pic2: "project4_pic2.jpg" },
+    { title: "Resource PC", text: "Project 5 description goes here.", pic1 : "Resources/ProjectMedia/AbtMe.png", pic2: "project5_pic2.jpg" },
+    { title: "Sh*tBot", text: "Project 6 description goes here.", pic1 : "project6_pic1.jpg", pic2: "project6_pic2.jpg" },
+    { title: "Pnumatics", text: "Project 7 description goes here.", pic1 : "Resources/ProjectMedia/Spray_n_Pray.mp4", pic2: "project7_pic2.jpg" },
+    { title: "VR", text: "Project 8 description goes here.", pic1 : "project8_pic1.jpg", pic2: "project8_pic2.jpg" },
+    { title: "H.E.R.B.I.E", text: "Project 9 description goes here.", pic1 : "project9_pic1.jpg", pic2: "project9_pic2.jpg" },
+    { title: "Portfolio", text: "Project 10 description goes here.", pic1 : "project10_pic1.jpg", pic2: "project10_pic2.jpg" }
 ];
 
 function buildProjectList() {
@@ -974,6 +987,43 @@ function updateProjectDescription(index) {
     const data = projectDescriptions[index] || projectDescriptions[0];
     projectTitle.textContent = data.title;
     projectText.textContent = data.text;
+
+    updateProjectMedia(projectPic1, projectPic1Video, projectPic1Fallback, data.pic1);
+    updateProjectMedia(projectPic2Image, projectPic2Video, projectPic2Fallback, data.pic2);
+}
+
+function updateProjectMedia(image, video, fallback, source) {
+    const hasSource = typeof source === "string" && source.trim() !== "";
+    const isVideo = hasSource && source.toLowerCase().endsWith(".mp4");
+
+    image.hidden = isVideo;
+    video.hidden = !isVideo;
+    fallback.hidden = hasSource;
+
+    image.onerror = () => {
+        image.hidden = true;
+        fallback.hidden = false;
+    };
+
+    if (isVideo) {
+        video.muted = true;
+        video.autoplay = true;
+        video.playsInline = true;
+        video.controls = false;
+        video.src = source;
+        video.currentTime = 0;
+        video.play().catch(() => {});
+    } else if (hasSource) {
+        image.src = source;
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+    } else {
+        image.removeAttribute("src");
+        video.pause();
+        video.removeAttribute("src");
+        video.load();
+    }
 }
 
 let selectedProjectIndex = null;
@@ -998,6 +1048,18 @@ function resetProjectListToDefault() {
 
     projectTitle.textContent = "Select a project";
     projectText.textContent = "Pick any item from the list to view its project details.";
+    projectPic1.hidden = true;
+    projectPic1Video.hidden = true;
+    projectPic1Fallback.hidden = true;
+    projectPic2Image.hidden = true;
+    projectPic2Video.hidden = true;
+    projectPic2Fallback.hidden = true;
+    projectPic1Video.pause();
+    projectPic1Video.removeAttribute("src");
+    projectPic1Video.load();
+    projectPic2Video.pause();
+    projectPic2Video.removeAttribute("src");
+    projectPic2Video.load();
 
     if (list) {
         requestAnimationFrame(() => {
@@ -1124,3 +1186,4 @@ document.addEventListener("mousemove", e => {
         ratio *
         (list.scrollHeight - list.clientHeight);
 });
+
